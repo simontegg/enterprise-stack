@@ -18,6 +18,8 @@
   "homepage": "https://github.com/simontegg/valueflows-gql#readme",
   "dependencies": {
     "express": "^4.15.3",
-    "postgraphql": "^3.2.0"
+    "graphql": "^0.9.6",
+    "postgraphql": "^3.2.0",
+    "prettyjson": "^1.2.1"
   }
 }

@@ -1,3 +1,4 @@
+
 BEGIN;
 
 CREATE SCHEMA valueflows;
@@ -108,7 +109,7 @@ CREATE FUNCTION valueflows.create_relationship (
       AND o.subject_id = _subject_id 
       AND o.classification = _classification 
       AND s.classification = _classification
-$$ LANGUAGE SQL STABLE;
+$$ LANGUAGE SQL;
 
 -- private
 CREATE TABLE valueflows_private.person_account (
@@ -123,6 +124,8 @@ CREATE TABLE valueflows_private.person_account (
     created_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now()),
     updated_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now())
 );
+
+END;
 
 
 
