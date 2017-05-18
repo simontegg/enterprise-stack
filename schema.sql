@@ -3,7 +3,7 @@ BEGIN;
 CREATE SCHEMA valueflows;
 CREATE SCHEMA valueflows_private;
 
-CREATE extension IF NOT exists 'uuid-ossp';
+CREATE extension IF NOT exists "uuid-ossp";
 
 -- person
 CREATE TABLE valueflows.person (
@@ -43,20 +43,18 @@ COMMENT ON COLUMN valueflows.organization.img is 'A url for an image representin
 COMMENT ON COLUMN valueflows.organization.created_at is 'The time this organization was created.';
 COMMENT ON COLUMN valueflows.organization.updated_at is 'The time this organization was updated.';
 
-r92017pc
-
 -- memberships
 CREATE TABLE valueflows.membership (
     PRIMARY KEY (person_id, organization_id),
-    person_id       UUID                                    NOT NULL
-                    CONSTRAINT FOREIGN KEY (person_id)
+    person_id       UUID                                    NOT NULL,
+                    CONSTRAINT person_id_fkey FOREIGN KEY (person_id)
                         REFERENCES valueflows.person (id) MATCH SIMPLE
                         ON DELETE CASCADE ON UPDATE CASCADE,
-    organization_id UUID                                    NOT NULL 
-                    CONSTRAINT FOREIGN KEY (organization_id)
+    organization_id UUID                                    NOT NULL,
+                    CONSTRAINT organization_id_fkey FOREIGN KEY (organization_id)
                         REFERENCES valueflows.person (id) MATCH SIMPLE
                         ON DELETE CASCADE ON UPDATE CASCADE,
-    is_admin        BOOLEAN   DEFAULT FALSE                 NOT NULL
+    is_admin        BOOLEAN   DEFAULT FALSE                 NOT NULL,
     created_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now()),
     updated_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now())
 );
@@ -71,17 +69,17 @@ COMMENT ON COLUMN valueflows.membership.updated_at is 'The time this relationshi
 -- allows a sub-organization to have multiple independent parents?
 -- nested hierarchical relationships between organizations
 CREATE TABLE valueflows.organization_relationship (
-    PRIMARY KEY (subject, object, classification)
-    classification  VARCHAR(256)  NOT NULL
-    subject_id       UUID          NOT NULL
-                     CONSTRAINT FOREIGN KEY (subject_id)
+    PRIMARY KEY (subject_id, object_id, classification),
+    classification  VARCHAR(256)  NOT NULL,
+    subject_id      UUID          NOT NULL,
+                    CONSTRAINT subject_id_fkey FOREIGN KEY (subject_id)
                          REFERENCES valueflows.organization (id) MATCH SIMPLE
                          ON DELETE CASCADE ON UPDATE CASCADE,
-    object_id       UUID          NOT NULL 
-                    CONSTRAINT FOREIGN KEY (object_id)
+    object_id       UUID          NOT NULL,
+                    CONSTRAINT object_id_fkey FOREIGN KEY (object_id)
                         REFERENCES valueflows.organization (id) MATCH SIMPLE
                         ON DELETE CASCADE ON UPDATE CASCADE,
-    depth           INT           NOT NULL
+    depth           INT           NOT NULL,
     created_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now()),
     updated_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now())
 );
@@ -101,34 +99,26 @@ CREATE FUNCTION valueflows.create_relationship (
   _object_id UUID, 
   _classification VARCHAR(256)
 ) RETURNS VOID AS $$
-    BEGIN
-      BEGIN
-        INSERT INTO valueflows.relationship (subject_id, object_id, depth, classification)
-        VALUES (_subject_id, _object_id, 0, _classification)
-      END
-      BEGIN
-        INSERT INTO valueflows.relationship (subject_id, object_id, depth, classification)
-        SELECT s.subject_id, o.object_id, s.depth + o.depth + 1, classification
-        FROM valueflows.organization_relationship o, valueflows.organization_relationship s
-        WHERE s.object_id = _object_id 
-          AND o.subject_id = _subject_id 
-          AND o.classification = _classification 
-          AND s.clasification = _classification
-      END
-    END
+    INSERT INTO valueflows.organization_relationship (subject_id, object_id, depth, classification)
+    VALUES (_subject_id, _object_id, 0, _classification);
+    INSERT INTO valueflows.organization_relationship (subject_id, object_id, depth, classification)
+    SELECT s.subject_id, o.object_id, s.depth + o.depth + 1, s.classification
+    FROM valueflows.organization_relationship o, valueflows.organization_relationship s
+    WHERE s.object_id = _object_id 
+      AND o.subject_id = _subject_id 
+      AND o.classification = _classification 
+      AND s.classification = _classification
 $$ LANGUAGE SQL STABLE;
-
-
 
 -- private
 CREATE TABLE valueflows_private.person_account (
     PRIMARY KEY (id),
-    id              UUID
-                    CONSTRAINT FOREIGN KEY (id)
+    id              UUID,
+                    CONSTRAINT id_fkey FOREIGN KEY (id)
                         REFERENCES valueflows.person (id) MATCH SIMPLE
                         ON DELETE CASCADE ON UPDATE CASCADE,
-    email           VARCHAR(256)
-                    CONSTRAINT UNIQUE (email),
+    email           VARCHAR(256),
+                    CONSTRAINT email_unique UNIQUE (email),
     email_confirmed BOOLEAN   DEFAULT FALSE NOT NULL,
     created_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now()),
     updated_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now())

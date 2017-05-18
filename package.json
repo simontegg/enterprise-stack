@@ -1,0 +1,23 @@
+{
+  "name": "valueflows-gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simontegg/valueflows-gql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simontegg/valueflows-gql/issues"
+  },
+  "homepage": "https://github.com/simontegg/valueflows-gql#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "postgraphql": "^3.2.0"
+  }
+}
