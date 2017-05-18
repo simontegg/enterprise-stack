@@ -97,19 +97,24 @@ COMMENT ON COLUMN valueflows.organization_relationship.updated_at IS 'The time t
 -- functions
 
 CREATE FUNCTION valueflows.create_relationship (
-  subject_id UUID, 
-  object_id UUID, 
-  depth INT DEFAULT 0,
-  classification VARCHAR(256)
+  _subject_id UUID, 
+  _object_id UUID, 
+  _classification VARCHAR(256)
 ) RETURNS VOID AS $$
     BEGIN
-      INSERT INTO valueflows.relationship (subject_id, object_id, depth, classification)
-      SELECT s.subject_id, o.object_id, s.depth + o.depth + 1, classification
-      FROM valueflows.organization_relationship o, valueflows.organization_relationship s
-      WHERE s.object_id = object_id 
-        AND o.subject_id = subject_id 
-        AND o.classification = classification 
-        AND s.clasification = classification
+      BEGIN
+        INSERT INTO valueflows.relationship (subject_id, object_id, depth, classification)
+        VALUES (_subject_id, _object_id, 0, _classification)
+      END
+      BEGIN
+        INSERT INTO valueflows.relationship (subject_id, object_id, depth, classification)
+        SELECT s.subject_id, o.object_id, s.depth + o.depth + 1, classification
+        FROM valueflows.organization_relationship o, valueflows.organization_relationship s
+        WHERE s.object_id = _object_id 
+          AND o.subject_id = _subject_id 
+          AND o.classification = _classification 
+          AND s.clasification = _classification
+      END
     END
 $$ LANGUAGE SQL STABLE;
 
