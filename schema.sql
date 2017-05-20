@@ -10,7 +10,7 @@ CREATE extension IF NOT exists "uuid-ossp";
 CREATE TYPE valueflows.agent_type AS ENUM (
     'Person',
     'Organization'
-)
+);
 
 CREATE TABLE valueflows.agent (
     PRIMARY KEY (id),
@@ -38,18 +38,18 @@ COMMENT ON COLUMN valueflows.agent.updated_at is 'The time this agent was update
 -- person
 CREATE VIEW valueflows.person AS
     SELECT id, img, first_name, last_name, created_at, updated_at
-    FROM valueflows.agent AS a
-    WHERe a.agent_type = 'Person';
+      FROM valueflows.agent AS a
+     WHERE a.agent_type = 'Person';
 
 -- organization
 CREATE VIEW valueflows.organization AS
     SELECT id, img, name, classification, created_at, updated_at
-    FROM valueflows.agent AS a
-    WHERe a.agent_type = 'Organization';
+      FROM valueflows.agent AS a
+     WHERE a.agent_type = 'Organization';
 
 
 CREATE TABLE valueflows.relationship (
-    PRIMARY KEY (subject_id, object_id, relationship_type, degrees),
+    PRIMARY KEY (subject_id, object_id, relationship_type),
     relationship_type   VARCHAR(256)  NOT NULL,
     subject_id          UUID          NOT NULL,
                         CONSTRAINT subject_id_fkey FOREIGN KEY (subject_id)
@@ -66,30 +66,33 @@ CREATE TABLE valueflows.relationship (
 COMMENT ON TABLE valueflows.relationship IS 'A relationship indicating that a person is a member of an organization';
 COMMENT ON COLUMN valueflows.relationship.subject_id IS 'A uuid that refernces the subject (agent) of the relationship' ;
 COMMENT ON COLUMN valueflows.relationship.object_id IS 'A uuid that references the object (agent) of the relationship';
-COMMENT ON COLUMN valueflows.relationship.classification IS 'The type of relationship.';
+COMMENT ON COLUMN valueflows.relationship.relationship_type IS 'The type of relationship.';
 COMMENT ON COLUMN valueflows.relationship.created_at IS 'The time this relationship was created.';
 COMMENT ON COLUMN valueflows.relationship.updated_at IS 'The time this relationship was updated.';
 
 -- views
-CREATE RECURSIVE VIEW valueflows.belongs_to (id, super) AS (
-    SELECT subject_id, object_id, created_at, updated_at
-    FROM valueflows.relationship
-    WHERE relationship_type = 'Membership'
-    UNION ALL
-    SELECT s.subject_id, b.object_id
-    FROM valueflows.relationship s, belongs_to b
-    WHERE s.object_id = b.subject_id
-);
+-- http://schinckel.net/2014/09/13/long-live-adjacency-lists/
+ CREATE RECURSIVE VIEW valueflows.has_member (subject_id, object_id, created_at, updated_at) AS (
+     SELECT subject_id, object_id, created_at, updated_at
+       FROM valueflows.relationship AS r
+   --   WHERE r.relationship_type = 'HasMember'
+      UNION
+     SELECT r.subject_id, r.object_id, r.created_at, r.updated_at
+       FROM valueflows.relationship AS r
+      INNER JOIN has_member
+         ON r.object_id = has_member.subject_id
+ );
 
-
-
+CREATE FUNCTION valueflows.get_members (org_id UUID) RETURNS SETOF valueflows.has_member AS $$
+    SELECT * FROM valueflows.has_member WHERE subject_id = org_id
+$$ LANGUAGE SQL STABLE;
 
 -- private
 CREATE TABLE valueflows_private.person_account (
     PRIMARY KEY (id),
     id              UUID,
                     CONSTRAINT id_fkey FOREIGN KEY (id)
-                        REFERENCES valueflows.person (id) MATCH SIMPLE
+                        REFERENCES valueflows.agent (id) MATCH SIMPLE
                         ON DELETE CASCADE ON UPDATE CASCADE,
     email           VARCHAR(256),
                     CONSTRAINT email_unique UNIQUE (email),
@@ -99,6 +102,3 @@ CREATE TABLE valueflows_private.person_account (
 );
 
 END;
-
-
-
