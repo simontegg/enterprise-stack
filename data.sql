@@ -29,11 +29,12 @@ CREATE FUNCTION valueflows.get_ids (
   BEGIN
     SELECT id INTO subject_id FROM valueflows.agent a WHERE a.name = subject_name;
     SELECT id INTO object_id FROM valueflows.agent a WHERE a.name = object_name;
-    SELECT 'HasMember' INTO relationship_type;
+    SELECT 'MemberOf' INTO relationship_type;
   END
 $$ LANGUAGE plpgsql;
 
 INSERT INTO valueflows.relationship (subject_id, object_id, relationship_type) SELECT * FROM get_ids('B1', 'B2');
 INSERT INTO valueflows.relationship (subject_id, object_id, relationship_type) SELECT * FROM get_ids('B2', 'B3');
+INSERT INTO valueflows.relationship (subject_id, object_id, relationship_type) SELECT * FROM get_ids('ACME', 'Evil Corp');
 
 END;

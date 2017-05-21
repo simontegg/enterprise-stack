@@ -47,7 +47,6 @@ CREATE VIEW valueflows.organization AS
       FROM valueflows.agent AS a
      WHERE a.agent_type = 'Organization';
 
-
 CREATE TABLE valueflows.relationship (
     PRIMARY KEY (subject_id, object_id, relationship_type),
     relationship_type   VARCHAR(256)  NOT NULL,
@@ -63,7 +62,7 @@ CREATE TABLE valueflows.relationship (
     updated_at          TIMESTAMP WITHOUT TIME ZONE DEFAULT timezone('utc'::text, now())
 );
 
-COMMENT ON TABLE valueflows.relationship IS 'A relationship indicating that a person is a member of an organization';
+COMMENT ON TABLE valueflows.relationship IS 'A relationship between two agents';
 COMMENT ON COLUMN valueflows.relationship.subject_id IS 'A uuid that refernces the subject (agent) of the relationship' ;
 COMMENT ON COLUMN valueflows.relationship.object_id IS 'A uuid that references the object (agent) of the relationship';
 COMMENT ON COLUMN valueflows.relationship.relationship_type IS 'The type of relationship.';
@@ -72,20 +71,37 @@ COMMENT ON COLUMN valueflows.relationship.updated_at IS 'The time this relations
 
 -- views
 -- http://schinckel.net/2014/09/13/long-live-adjacency-lists/
- CREATE RECURSIVE VIEW valueflows.has_member (subject_id, object_id, created_at, updated_at) AS (
-     SELECT subject_id, object_id, created_at, updated_at
+ CREATE RECURSIVE VIEW valueflows.has_member (subject_id, object_id, degrees) AS (
+     SELECT r.object_id, r.subject_id, 1 AS degrees
        FROM valueflows.relationship AS r
-   --   WHERE r.relationship_type = 'HasMember'
-      UNION
-     SELECT r.subject_id, r.object_id, r.created_at, r.updated_at
+      WHERE r.relationship_type = 'MemberOf'
+      UNION ALL
+     SELECT r.object_id, r.subject_id, h.degrees + 1
+       FROM has_member AS h
+       JOIN valueflows.relationship r
+         ON r.object_id = h.subject_id
+ );
+ 
+ CREATE RECURSIVE VIEW valueflows.member_of (subject_id, object_id, degrees) AS (
+     SELECT r.subject_id, r.object_id, 1 AS degrees
        FROM valueflows.relationship AS r
-      INNER JOIN has_member
-         ON r.object_id = has_member.subject_id
+      WHERE r.relationship_type = 'MemberOf'
+      UNION ALL
+     SELECT r.subject_id, r.object_id, h.degrees + 1
+       FROM has_member AS h
+       JOIN valueflows.relationship r
+         ON r.subject_id = h.object_id
  );
 
+-- TODO: functions
+-- getMembersByDepthAndAgentType
+-- getPeopleWhoAreMemberOf
+-- getOrganizationsThatAreMemberOf
+-- getSiblingOrganizations
 CREATE FUNCTION valueflows.get_members (org_id UUID) RETURNS SETOF valueflows.has_member AS $$
-    SELECT * FROM valueflows.has_member WHERE subject_id = org_id
+    SELECT * FROM valueflows.has_member
 $$ LANGUAGE SQL STABLE;
+
 
 -- private
 CREATE TABLE valueflows_private.person_account (
