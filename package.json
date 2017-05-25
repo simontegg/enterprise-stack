@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.15.3",
     "graphql": "^0.9.6",
+    "knex": "^0.13.0",
     "postgraphql": "^3.2.0",
     "prettyjson": "^1.2.1"
   }

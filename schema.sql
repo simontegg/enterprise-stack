@@ -41,6 +41,13 @@ CREATE VIEW valueflows.person AS
       FROM valueflows.agent AS a
      WHERE a.agent_type = 'Person';
 
+CREATE FUNCTION valueflows.person_full_name (person valueflows.person) RETURNS TEXT AS $$
+  SELECT person.first_name || ' ' || person.last_name
+$$ LANGUAGE SQL STABLE;
+
+COMMENT ON FUNCTION valueflows.person_full_name(valueflows.person) IS 'A person’s full name which is a concatenation of their first and last name.';
+
+
 -- organization
 CREATE VIEW valueflows.organization AS
     SELECT id, img, name, classification, created_at, updated_at
@@ -88,7 +95,7 @@ COMMENT ON COLUMN valueflows.relationship.updated_at IS 'The time this relations
       WHERE r.relationship_type = 'MemberOf'
       UNION ALL
      SELECT r.subject_id, r.object_id, h.degrees + 1
-       FROM has_member AS h
+       FROM member_of AS h
        JOIN valueflows.relationship r
          ON r.subject_id = h.object_id
  );
@@ -98,10 +105,15 @@ COMMENT ON COLUMN valueflows.relationship.updated_at IS 'The time this relations
 -- getPeopleWhoAreMemberOf
 -- getOrganizationsThatAreMemberOf
 -- getSiblingOrganizations
-CREATE FUNCTION valueflows.get_members (org_id UUID) RETURNS SETOF valueflows.has_member AS $$
-    SELECT * FROM valueflows.has_member
-$$ LANGUAGE SQL STABLE;
 
+CREATE FUNCTION valueflows.get_members (organization_id VARCHAR) RETURNS SETOF valueflows.person AS $$
+    SELECT person
+      FROM valueflows.relationship AS relationship
+      JOIN valueflows.person AS person
+        ON relationship.subject_id = person.id
+     WHERE relationship.relationship_type = 'MemberOf'
+       AND relationship.object_id = uuid($1)
+$$ LANGUAGE SQL STABLE;
 
 -- private
 CREATE TABLE valueflows_private.person_account (
