@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=vf
+%uri=https://github.com/simontegg/valueflows-gql
+
+valueflows-schema 2017-05-27T07:49:48Z simontegg,,, <simontegg@gmail.com> # add main schema
+agent [valueflows-schema] 2017-05-27T08:42:28Z simontegg,,, <simontegg@gmail.com> # Creates table to track our users.
