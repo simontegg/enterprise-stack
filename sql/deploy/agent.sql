@@ -38,13 +38,6 @@ CREATE VIEW valueflows.person AS
       FROM valueflows.agent AS a
      WHERE a.agent_type = 'Person';
 
-CREATE FUNCTION valueflows.person_full_name (person valueflows.person) RETURNS TEXT AS $$
-  SELECT person.first_name || ' ' || person.last_name
-$$ LANGUAGE SQL STABLE;
-
-COMMENT ON FUNCTION valueflows.person_full_name(valueflows.person) IS 'A person’s full name which is a concatenation of their first and last name.';
-
-
 -- organization
 CREATE VIEW valueflows.organization AS
     SELECT id, img, name, classification, created_at, updated_at

@@ -3,5 +3,7 @@
 BEGIN;
 
 DROP TABLE valueflows.agent;
+DROP VIEW valueflows.person;
+DROP VIEW valueflows.organization;
 
 COMMIT;
