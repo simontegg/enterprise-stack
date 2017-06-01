@@ -3,12 +3,6 @@
 
 BEGIN;
 
--- agent
-CREATE TYPE valueflows.agent_type AS ENUM (
-    'Person',
-    'Organization'
-);
-
 CREATE TABLE valueflows.agent (
     PRIMARY KEY (id),
     id              UUID          DEFAULT uuid_generate_v1mc()  NOT NULL, 

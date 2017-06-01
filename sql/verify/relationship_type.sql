@@ -2,6 +2,8 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT id, name, description
+  FROM valueflows.relationship_type
+ WHERE FALSE;
 
 ROLLBACK;

@@ -2,7 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION valueflows.person_full_name;
--- XXX Add DDLs here.
+DROP FUNCTION valueflows.person_full_name(valueflows.person);
 
 COMMIT;

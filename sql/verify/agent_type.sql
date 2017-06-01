@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT plan(1);
+SELECT has_type('valueflows', 'agent_type');
 
 ROLLBACK;

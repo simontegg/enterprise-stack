@@ -5,7 +5,7 @@
 valueflows-schema 2017-05-27T07:49:48Z simontegg,,, <simontegg@gmail.com> # add main schema
 agent_type [valueflows-schema] 2017-05-30T09:24:51Z simontegg,,, <simontegg@gmail.com> # define types of agents
 relationship_type [valueflows-schema] 2017-05-30T09:25:37Z simontegg,,, <simontegg@gmail.com> # create a table of relationship types
-agent [valueflows-schema] 2017-05-27T08:42:28Z simontegg,,, <simontegg@gmail.com> # Creates table to track our users.
+agent [valueflows-schema agent_type] 2017-05-27T08:42:28Z simontegg,,, <simontegg@gmail.com> # Creates table to track our users.
 person_full_name [agent] 2017-05-30T09:15:26Z simontegg,,, <simontegg@gmail.com> # get a person's full name from their first and last names
 relationship [agent] 2017-05-30T07:47:24Z simontegg,,, <simontegg@gmail.com> # create a table to track the relationships between agents
 has_member [relationship] 2017-05-30T08:16:54Z simontegg,,, <simontegg@gmail.com> # create a recursive view on relationships

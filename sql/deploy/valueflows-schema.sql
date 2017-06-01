@@ -5,6 +5,7 @@ BEGIN;
 CREATE SCHEMA valueflows;
 CREATE SCHEMA valueflows_private;
 
-CREATE extension IF NOT exists "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS pgtap;
 
 COMMIT;

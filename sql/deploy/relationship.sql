@@ -5,7 +5,10 @@ BEGIN;
 
 CREATE TABLE valueflows.relationship (
     PRIMARY KEY (subject_id, object_id, relationship_type),
-    relationship_type   VARCHAR(256)  NOT NULL,
+    relationship_type   INT  NOT NULL,
+                        CONSTRAINT relationship_type_fkey FOREIGN KEY (relationship_type)
+                             REFERENCES valueflows.relationship_type (id) MATCH SIMPLE
+                             ON DELETE CASCADE ON UPDATE CASCADE,
     subject_id          UUID          NOT NULL,
                         CONSTRAINT subject_id_fkey FOREIGN KEY (subject_id)
                              REFERENCES valueflows.agent (id) MATCH SIMPLE

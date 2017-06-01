@@ -4,7 +4,7 @@
 BEGIN;
 
 CREATE TABLE valueflows.relationship_type (
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
     id          INT           NOT NULL,
                 CONSTRAINT id_unique UNIQUE (id),
     name        VARCHAR(256)  NOT NULL,

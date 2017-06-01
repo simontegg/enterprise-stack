@@ -3,6 +3,10 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+-- agent
+CREATE TYPE valueflows.agent_type AS ENUM (
+    'Person',
+    'Organization'
+);
 
 COMMIT;

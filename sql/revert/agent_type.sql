@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TYPE valueflows.agent_type;
 
 COMMIT;
