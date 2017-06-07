@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE valueflows.relationship CASCADE;
+DROP TABLE valueflows.relationship;
 
 COMMIT;
