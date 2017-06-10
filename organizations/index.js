@@ -22,7 +22,9 @@ function OrganizationList ({ organizations, loading }) {
       </Head>
       {loading
         ? <div>Loading</div>
-        : <Table columns={columns} dataSource={organizations} />}
+        : <div style={{ backgroundColor: '#fff' }}>
+          <Table columns={columns} dataSource={organizations} />
+        </div>}
     </div>
   )
 }
@@ -30,7 +32,7 @@ function OrganizationList ({ organizations, loading }) {
 export default graphql(
   gql`
   query allOrganizations($first: Int!) {
-    allOrganizations(first: $first) {
+    allOrganizations(first: $first, orderBy: NAME_ASC) {
       nodes {
         id,
         name
