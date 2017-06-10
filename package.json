@@ -19,9 +19,18 @@
   },
   "homepage": "https://github.com/simontegg/valueflows-gql#readme",
   "dependencies": {
+    "amdefine": "^1.0.1",
     "antd": "^2.10.4",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-css-modules-transform": "^1.2.7",
+    "babel-plugin-import": "^1.2.1",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-wrap-in-js": "^1.1.1",
     "express": "^4.15.3",
+    "glob": "^7.1.2",
+    "graceful-fs": "^4.1.11",
     "graphql": "^0.9.6",
+    "graphql-tag": "^2.2.2",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
     "postgraphql": "^3.2.0",
@@ -30,9 +39,17 @@
     "proptypes": "^1.1.0",
     "react": "^15.5.4",
     "react-apollo": "^1.4.2",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "styled-jsx": "^1.0.4",
+    "stylis": "latest"
   },
   "devDependencies": {
-    "next": "^2.4.2"
+    "autoprefixer": "^7.1.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "next": "^2.4.1",
+    "postcss-easy-import": "^2.1.0",
+    "postcss-loader": "^2.0.5",
+    "raw-loader": "^0.5.1"
   }
 }

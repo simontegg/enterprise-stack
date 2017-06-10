@@ -1,9 +1,14 @@
-import withData from '../apollo/with-data'
 import App from '../components/app'
-import Header from '../components/header'
+import Head from 'next/head'
+
+import styles from '../styles/index.less'
+import withData from '../apollo/with-data'
 
 export default withData(props => (
-  <App>
-    <Header pathname={props.url.pathname} />
-  </App>
+  <div>
+    <Head>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
+    </Head>
+    <App />
+  </div>
 ))

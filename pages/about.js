@@ -1,8 +1,9 @@
-import App from '../components/app'
 import About from '../components/about'
+import App from '../components/app'
+import Head from 'next/head'
 
 export default props => (
-  <App>
-    <About />
-  </App>
+  <div>
+    <Head />
+  </div>
 )

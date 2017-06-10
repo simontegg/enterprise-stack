@@ -1,7 +1,6 @@
 const express = require('express')
 const next = require('next')
 const { postgraphql } = require('postgraphql')
-console.log({ postgraphql })
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -10,7 +9,13 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.use(postgraphql('postgres://localhost:5432'))
+  server.use(
+    postgraphql(
+      { host: 'localhost', database: 'sq_test', port: 5432 },
+      'valueflows',
+      { graphiql: true }
+    )
+  )
 
   server.get('/about', (req, res) => {
     return app.render(req, res, '/about', req.query)
