@@ -8,6 +8,10 @@ var _taggedTemplateLiteral2 = require('babel-runtime/helpers/taggedTemplateLiter
 
 var _taggedTemplateLiteral3 = _interopRequireDefault(_taggedTemplateLiteral2);
 
+var _table = require('antd/lib/table');
+
+var _table2 = _interopRequireDefault(_table);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -32,34 +36,40 @@ var debug = require('debug')('vf:organizations:index');
 
 
 var AGENTS_PER_PAGE = 10;
+var columns = [{
+  title: 'Name',
+  dataIndex: 'name',
+  key: 'name'
+}];
 
-function OrganizationList(props) {
-  debug(props);
+function OrganizationList(_ref) {
+  var organizations = _ref.organizations,
+      loading = _ref.loading;
+
   return _react2.default.createElement('div', {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 19
     }
   }, _react2.default.createElement(_head2.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 20
     }
   }, _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _organizations2.default }, __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 21
     }
-  })), props ? _react2.default.createElement('div', {
+  })), loading ? _react2.default.createElement('div', {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 24
     }
-  }, 'Loading') : _react2.default.createElement('div', {
-    __source: {
+  }, 'Loading') : _react2.default.createElement(_table2.default, { columns: columns, dataSource: organizations, __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 25
     }
-  }, 'Loaded'));
+  }));
 }
 
 exports.default = (0, _reactApollo.graphql)((0, _reactApollo.gql)(_templateObject), {
@@ -68,10 +78,10 @@ exports.default = (0, _reactApollo.graphql)((0, _reactApollo.gql)(_templateObjec
       first: AGENTS_PER_PAGE
     }
   },
-  props: function props(_ref) {
-    var _ref$data = _ref.data,
-        nodes = _ref$data.allOrganizations.nodes,
-        loading = _ref$data.loading;
+  props: function props(_ref2) {
+    var _ref2$data = _ref2.data,
+        nodes = _ref2$data.allOrganizations.nodes,
+        loading = _ref2$data.loading;
     return {
       organizations: nodes,
       loading: loading

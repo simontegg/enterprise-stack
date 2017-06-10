@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "DEBUG=* node server.js",
+    "dev": "DEBUG=vf:* node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },

@@ -6,15 +6,23 @@ import { Table } from 'antd'
 import style from './organizations.less'
 
 const AGENTS_PER_PAGE = 10
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name'
+  }
+]
 
-function OrganizationList (props) {
-  debug(props)
+function OrganizationList ({ organizations, loading }) {
   return (
     <div>
       <Head>
         <style dangerouslySetInnerHTML={{ __html: style }} />
       </Head>
-      {props ? <div>Loading</div> : <div>Loaded</div>}
+      {loading
+        ? <div>Loading</div>
+        : <Table columns={columns} dataSource={organizations} />}
     </div>
   )
 }
