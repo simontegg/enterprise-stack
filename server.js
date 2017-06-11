@@ -2,7 +2,9 @@ const express = require('express')
 const next = require('next')
 const { postgraphql } = require('postgraphql')
 
+const serverConfig = require('./server.config')
 const dev = process.env.NODE_ENV !== 'production'
+// const app = next({ dev, conf: serverConfig })
 const app = next({ dev })
 const handle = app.getRequestHandler()
 

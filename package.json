@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "DEBUG=vf:* node server.js",
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js"
   },
   "repository": {
@@ -34,13 +34,18 @@
     "graphql-tag": "^2.2.2",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
+    "less-variables-to-json": "^1.0.2",
     "postgraphql": "^3.2.0",
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0",
     "prettyjson": "^1.2.1",
     "prop-types": "^15.5.10",
     "proptypes": "^1.1.0",
+    "ramda": "^0.24.1",
     "react": "^15.5.4",
     "react-apollo": "^1.4.2",
     "react-dom": "^15.5.4",
+    "react-lite": "github:Chieveit/react-lite#with-libs",
     "styled-jsx": "^1.0.4",
     "stylis": "latest"
   },
@@ -48,9 +53,11 @@
     "autoprefixer": "^7.1.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "less-to-json-loader": "^1.1.0",
     "next": "^2.4.1",
     "postcss-easy-import": "^2.1.0",
     "postcss-loader": "^2.0.5",
-    "raw-loader": "^0.5.1"
+    "raw-loader": "^0.5.1",
+    "webpack-closure-compiler": "^2.1.4"
   }
 }

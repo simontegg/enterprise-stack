@@ -1,5 +1,7 @@
 const debug = require('debug')('vf:organizations:index')
 import { gql, graphql } from 'react-apollo'
+import { map, merge } from 'ramda'
+
 import Head from 'next/head'
 import { Table } from 'antd'
 
@@ -13,6 +15,9 @@ const columns = [
     key: 'name'
   }
 ]
+const addKeys = map(organization =>
+  merge(organization, { key: organization.id })
+)
 
 function OrganizationList ({ organizations, loading }) {
   return (
@@ -23,7 +28,7 @@ function OrganizationList ({ organizations, loading }) {
       {loading
         ? <div>Loading</div>
         : <div style={{ backgroundColor: '#fff' }}>
-          <Table columns={columns} dataSource={organizations} />
+          <Table columns={columns} dataSource={addKeys(organizations)} />
         </div>}
     </div>
   )

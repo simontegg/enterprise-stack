@@ -1,10 +1,11 @@
-@import "./color/colors";
+// less relative imports hack
+@import "./styles/color/colors";
 
 // The prefix to use on all css classes from ant.
 @ant-prefix             : ant;
 
 // -------- Colors -----------
-@primary-color          : @purple-6;
+@primary-color          : @blue-6;
 @info-color             : @blue-6;
 @success-color          : @green-6;
 @error-color            : @red-6;
@@ -46,7 +47,7 @@
 @heading-color-dark     : fade(#fff, 97%);
 @text-color-dark        : fade(#fff, 91%);
 @text-color-secondary-dark: fade(#fff, 67%);
-@font-size-base         : 14px;
+@font-size-base         : 12px;
 @font-size-lg           : @font-size-base + 2px;
 @line-height-base       : 1.5;
 @border-radius-base     : 4px;
