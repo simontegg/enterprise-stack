@@ -848,6 +848,12 @@
       "resolved": "https://registry.npmjs.org/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz",
       "integrity": "sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk="
     },
+    "buffer-json": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/buffer-json/-/buffer-json-1.0.0.tgz",
+      "integrity": "sha1-OfXKXgDMRO2EY65CImX/CD7xez8=",
+      "dev": true
+    },
     "buffer-writer": {
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/buffer-writer/-/buffer-writer-1.0.1.tgz",
@@ -880,6 +886,11 @@
       "version": "3.0.0",
       "resolved": "https://registry.npmjs.org/camel-case/-/camel-case-3.0.0.tgz",
       "integrity": "sha1-yjw2iKTpzzpM2nd9xNy8cTJJz3M="
+    },
+    "camelize": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/camelize/-/camelize-1.0.0.tgz",
+      "integrity": "sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs="
     },
     "can-use-dom": {
       "version": "0.1.0",
@@ -1114,6 +1125,11 @@
           "optional": true
         }
       }
+    },
+    "dasherize": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/dasherize/-/dasherize-2.0.0.tgz",
+      "integrity": "sha1-bYCcnNDPe7iVLYD8hPoT1H3bEwg="
     },
     "dataloader": {
       "version": "1.3.0",
@@ -2797,6 +2813,12 @@
       "integrity": "sha1-RsP+yMGJKxKwgz25vHYiF226s0s=",
       "dev": true
     },
+    "json-buffer": {
+      "version": "2.0.11",
+      "resolved": "https://registry.npmjs.org/json-buffer/-/json-buffer-2.0.11.tgz",
+      "integrity": "sha1-PkQf2jCYvo0eMXGtWRvGKjPi1V8=",
+      "dev": true
+    },
     "json-loader": {
       "version": "0.5.4",
       "resolved": "https://registry.npmjs.org/json-loader/-/json-loader-0.5.4.tgz",
@@ -3345,6 +3367,11 @@
       "version": "4.1.1",
       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
       "integrity": "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
+    },
+    "object-diff": {
+      "version": "0.0.4",
+      "resolved": "https://registry.npmjs.org/object-diff/-/object-diff-0.0.4.tgz",
+      "integrity": "sha1-2IOwRE/o/W4E5ZXXu2ZWgskWBH8="
     },
     "object.omit": {
       "version": "2.0.1",

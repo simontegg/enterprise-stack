@@ -1,12 +1,59 @@
 const lessVariablesToJson = require('less-variables-to-json')
 const path = require('path')
+const camelize = require('camelize')
+const bufferJson = require('buffer-json')
+const JSONB = require('json-buffer')
+const objectDiff = require('object-diff')
+const {
+  adjust,
+  curry,
+  each,
+  find,
+  fromPairs,
+  keys,
+  map,
+  mergeAll,
+  pipe,
+  propEq,
+  replace,
+  sort,
+  toPairs,
+  toString
+} = require('ramda')
+
+// functions
+const mapKeys = curry((fn, obj) => fromPairs(map(adjust(fn, 0), toPairs(obj))))
+const removeAt = mapKeys(replace('@', ''))
+const parse = pipe(
+  map(file => ({
+    data: JSON.parse(
+      file.data.toString('utf8').replace('module.exports = ', '')
+    ),
+    base: file.base
+  })),
+  sort((a, b) => (b.base === 'base-theme.js' ? 1 : -1)),
+  map(file => file.data)
+)
+
+const parseAndMerge = pipe(parse, mergeAll, camelize, removeAt)
+
+const sources = {
+  LESS: './styles/*.less',
+  THEMES: './styles/*-theme.js'
+}
+
+const targets = {
+  STYLES: './styles/'
+}
 
 exports.less = function * (fly) {
   yield fly
-    .source('./styles/base-theme.less')
+    .source(sources.LESS)
     .run({
       * func (file) {
-        const json = yield lessVariablesToJson(file.data.toString(), {
+        const data = file.data.toString()
+
+        const json = yield lessVariablesToJson(data, {
           rootpath: path.join(__dirname, 'styles'),
           relativeUrls: true
         })
@@ -14,8 +61,39 @@ exports.less = function * (fly) {
         file.data = new Buffer(
           `module.exports = ${JSON.stringify(json, null, '\t')}`
         )
-        file.base = 'base-theme.js'
+
+        file.base = replace('.less', '.js', file.base)
       }
     })
-    .target('./styles/')
+    .target(targets.STYLES)
+}
+
+exports.merge = function * (task) {
+  yield task.source(sources.THEMES).run({
+    every: false,
+    * func (files) {
+      const merged = parseAndMerge(files)
+
+      const data = new Buffer(
+        `module.exports = ${JSON.stringify(merged, null, '\t')}`
+      )
+
+      task.$.write(path.join(__dirname, '/styles/combined.js'), data)
+    }
+  })
+}
+
+exports.diff = function * (task) {
+  yield task.source(sources.THEMES).run({
+    every: false,
+    * func (files) {
+      const [base, custom] = parse(files)
+      const diff = objectDiff(base, custom)
+
+      task.$.write(
+        path.join(__dirname, '/styles/diff.js'),
+        JSON.stringify(diff, null, '\t')
+      )
+    }
+  })
 }
