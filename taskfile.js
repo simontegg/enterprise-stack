@@ -37,6 +37,7 @@ const parse = pipe(
 
 const parseAndMerge = pipe(parse, mergeAll, camelize, removeAt)
 
+// paths
 const sources = {
   LESS: './styles/*.less',
   THEMES: './styles/*-theme.js'
@@ -46,8 +47,17 @@ const targets = {
   STYLES: './styles/'
 }
 
-exports.less = function * (fly) {
-  yield fly
+// tasks
+exports.less = function * (task) {
+  task.serial(['variables', 'mergeAndDiff'])
+}
+
+exports.mergeAndDiff = function * (task) {
+  task.parallel(['merge', 'diff'])
+}
+
+exports.variables = function * (task) {
+  yield task
     .source(sources.LESS)
     .run({
       * func (file) {
@@ -92,7 +102,7 @@ exports.diff = function * (task) {
 
       task.$.write(
         path.join(__dirname, '/styles/diff.js'),
-        JSON.stringify(diff, null, '\t')
+        `module.exports = ${JSON.stringify(diff, null, '\t')}`
       )
     }
   })

@@ -737,6 +737,12 @@
       "integrity": "sha1-SOyNFt9Dd+rl+liEaCSAr02Vx3Q=",
       "dev": true
     },
+    "bluebird": {
+      "version": "3.5.0",
+      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.5.0.tgz",
+      "integrity": "sha1-eRQg1/VR7qKJdFOop3ZT+WYG1nw=",
+      "dev": true
+    },
     "bn.js": {
       "version": "4.11.6",
       "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-4.11.6.tgz",
@@ -958,6 +964,12 @@
       "version": "0.0.1",
       "resolved": "https://registry.npmjs.org/clone-stats/-/clone-stats-0.0.1.tgz",
       "integrity": "sha1-uI+UqCzzi4eR1YBG6kAprYjKmdE=",
+      "dev": true
+    },
+    "clor": {
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/clor/-/clor-5.1.0.tgz",
+      "integrity": "sha1-jTIGUNcZOt0E6/iR153uTKvIDCw=",
       "dev": true
     },
     "co": {
@@ -3230,6 +3242,12 @@
       "resolved": "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz",
       "integrity": "sha1-w2GT3Tzhwu7SrbfIAtu8d6gbHA8="
     },
+    "mri": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/mri/-/mri-1.1.0.tgz",
+      "integrity": "sha1-XAo/KcjM/7ux7JQdzsCdcfoy82o=",
+      "dev": true
+    },
     "ms": {
       "version": "2.0.0",
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
@@ -4770,6 +4788,20 @@
       "integrity": "sha1-IGvo4YiGC1FEJTdebxrom/sB/Y0=",
       "dev": true
     },
+    "taskr": {
+      "version": "0.9.1",
+      "resolved": "https://registry.npmjs.org/taskr/-/taskr-0.9.1.tgz",
+      "integrity": "sha1-IxLEcs7jVz+19FabHx8V+HGOKKo=",
+      "dev": true,
+      "dependencies": {
+        "glob": {
+          "version": "7.1.2",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-7.1.2.tgz",
+          "integrity": "sha512-MJTUg1kjuLeQCJ+ccE4Vpa6kKVXkPYJ2mOCQyUuKLcLQsdrMCpBPUi8qVE6+YuaJkozeA9NusTAw3hLr8Xe5EQ==",
+          "dev": true
+        }
+      }
+    },
     "temp": {
       "version": "0.8.3",
       "resolved": "https://registry.npmjs.org/temp/-/temp-0.8.3.tgz",
@@ -4817,6 +4849,12 @@
       "version": "2.0.2",
       "resolved": "https://registry.npmjs.org/timers-browserify/-/timers-browserify-2.0.2.tgz",
       "integrity": "sha1-q0iDz1l9zVCvIRNJoA+8pWrIa4Y=",
+      "dev": true
+    },
+    "tinydate": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/tinydate/-/tinydate-1.0.0.tgz",
+      "integrity": "sha1-IPMXVqE5We+MV+wTO6KbWt4ELKw=",
       "dev": true
     },
     "title-case": {

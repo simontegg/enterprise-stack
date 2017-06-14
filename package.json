@@ -63,6 +63,7 @@
     "postcss-easy-import": "^2.1.0",
     "postcss-loader": "^2.0.5",
     "raw-loader": "^0.5.1",
+    "taskr": "^0.9.1",
     "webpack-closure-compiler": "^2.1.4"
   }
 }

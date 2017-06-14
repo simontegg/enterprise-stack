@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const ClosureCompilerPlugin = require('webpack-closure-compiler')
 const path = require('path')
 const glob = require('glob')
-const theme = require('./styles/custom-theme')
+const theme = require('./styles/diff')
 
 const rules = [
   {

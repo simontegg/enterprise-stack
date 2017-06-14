@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"@heading-color": "rgba(0, 0, 0, 0.9)",
 	"@text-color": "rgba(0, 0, 0, 0.8)",
 	"@text-color-secondary": "rgba(0, 0, 0, 0.6)",
