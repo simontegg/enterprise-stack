@@ -8,6 +8,8 @@ import Head from 'next/head'
 import Layout from '../layout'
 import OrganizationList from '../organizations'
 
+console.log({ Layout })
+
 import styles from '../node_modules/antd/lib/style/index.less'
 
 // react apollo

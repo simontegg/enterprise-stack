@@ -48,6 +48,7 @@
     "react": "^15.5.4",
     "react-apollo": "^1.4.2",
     "react-dom": "^15.5.4",
+    "react-fela": "^5.0.3",
     "react-lite": "github:Chieveit/react-lite#with-libs",
     "styled-jsx": "^1.0.4",
     "stylis": "latest"
@@ -55,6 +56,8 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "buffer-json": "^1.0.0",
+    "fela": "^5.0.1",
+    "fela-dom": "^5.0.2",
     "json-buffer": "^2.0.11",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",

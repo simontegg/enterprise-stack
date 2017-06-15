@@ -1119,6 +1119,11 @@
       "resolved": "https://registry.npmjs.org/css-animation/-/css-animation-1.3.2.tgz",
       "integrity": "sha1-31FYIO9ZA3M60tsJmUA7MDe4uIA="
     },
+    "css-in-js-utils": {
+      "version": "1.0.3",
+      "resolved": "https://registry.npmjs.org/css-in-js-utils/-/css-in-js-utils-1.0.3.tgz",
+      "integrity": "sha1-msfgL3Y8+F2UAXZmVl7WiltfMhU="
+    },
     "css-tree": {
       "version": "1.0.0-alpha17",
       "resolved": "https://registry.npmjs.org/css-tree/-/css-tree-1.0.0-alpha17.tgz",
@@ -1471,6 +1476,26 @@
           "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk="
         }
       }
+    },
+    "fela": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/fela/-/fela-5.0.1.tgz",
+      "integrity": "sha1-dop40BkCH5tusVGHc7cGaFacGH8="
+    },
+    "fela-dom": {
+      "version": "5.0.2",
+      "resolved": "https://registry.npmjs.org/fela-dom/-/fela-dom-5.0.2.tgz",
+      "integrity": "sha1-jBDOn/KHLuzk6yf8v1lQ66HHavo="
+    },
+    "fela-tools": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/fela-tools/-/fela-tools-5.0.1.tgz",
+      "integrity": "sha1-PLkyOcOctXS21rQ6cYF4/zFz3eQ="
+    },
+    "fela-utils": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/fela-utils/-/fela-utils-5.0.1.tgz",
+      "integrity": "sha1-1l3CS9CTRCyJ1b3X2P/qzoK2CO4="
     },
     "filename-regex": {
       "version": "2.0.1",
@@ -2532,6 +2557,11 @@
       "resolved": "https://registry.npmjs.org/https-browserify/-/https-browserify-0.0.1.tgz",
       "integrity": "sha1-P5E2XKvmC3ftDruiS0VOPgnZWoI=",
       "dev": true
+    },
+    "hyphenate-style-name": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz",
+      "integrity": "sha1-MRYKNpMK2vH8BMYHT360FGXU7Es="
     },
     "iconv-lite": {
       "version": "0.4.17",
@@ -4204,6 +4234,11 @@
           "integrity": "sha1-J5ffwxJhguOpXj37suiT3ddFYVQ="
         }
       }
+    },
+    "react-fela": {
+      "version": "5.0.3",
+      "resolved": "https://registry.npmjs.org/react-fela/-/react-fela-5.0.3.tgz",
+      "integrity": "sha1-BPPxewA5yEgq3dx99hxpIh89nuE="
     },
     "react-hot-loader": {
       "version": "3.0.0-beta.7",
