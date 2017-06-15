@@ -37,6 +37,8 @@ export default ComposedComponent => {
         // Extract query data from the Apollo's store
         const state = apollo.getInitialState()
 
+        console.log({ state })
+
         serverState = {
           apollo: {
             // Make sure to only include Apollo's data state

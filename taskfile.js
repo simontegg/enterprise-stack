@@ -88,7 +88,7 @@ exports.merge = function * (task) {
         `module.exports = ${JSON.stringify(merged, null, '\t')}`
       )
 
-      task.$.write(path.join(__dirname, '/styles/combined.js'), data)
+      task.$.write(path.join(__dirname, '/styles/theme.js'), data)
     }
   })
 }
