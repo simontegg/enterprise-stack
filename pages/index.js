@@ -8,8 +8,6 @@ import Head from 'next/head'
 import Layout from '../layout'
 import OrganizationList from '../organizations'
 
-console.log({ Layout })
-
 import styles from '../node_modules/antd/lib/style/index.less'
 
 // react apollo
@@ -26,11 +24,10 @@ import styles from '../node_modules/antd/lib/style/index.less'
 
 export default props => (
   <div>
-    <Head>
-      <style dangerouslySetInnerHTML={{ __html: styles }} />
-    </Head>
+    <Head />
     <Layout>
       <OrganizationList />
+
     </Layout>
   </div>
 )

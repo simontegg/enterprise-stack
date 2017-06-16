@@ -40,16 +40,16 @@ const columns = [
     key: 'name'
   }
 ]
-const addKeys = map(organization =>
-  merge(organization, { key: organization.id })
-)
+// const addKeys = map(organization =>
+//  merge(organization, { key: organization.id })
+// )
 
+const addKeys = map(organization =>
+  merge(organization, { key: organization.name })
+)
 function OrganizationList ({ organizations = forStatic, loading }) {
   return (
     <div>
-      <Head>
-        <style dangerouslySetInnerHTML={{ __html: style }} />
-      </Head>
       {loading
         ? <div>Loading</div>
         : <div style={{ backgroundColor: bodyBackground }}>

@@ -4,39 +4,38 @@ import { Affix, Col, Layout, Menu, Icon, Row } from 'antd'
 const { Content, Header, Sider } = Layout
 import { Provider } from 'react-fela'
 import Image from '../components/image'
+import MdDashboard from '../components/icons/md-dashboard'
 
 // styles
 import style from './layout.less'
+import { textColorDark, fontSizeLg } from '../styles/theme'
 import getRenderer from '../styles/fela'
+
+const renderer = getRenderer()
+renderer.renderStatic(style)
 
 export default ({ children }) => (
   <div>
-    <Head> <style dangerouslySetInnerHTML={{ __html: style }} /> </Head>
     <Provider renderer={getRenderer()}>
       <Layout>
         <Layout>
           <Header>
-            <Row align='middle' type='flex' justify='space-around'>
-              <Col span={2}>
+            <Row
+              align='middle'
+              type='flex'
+              justify='space-around'
+              style={{ height: 64 }}
+            >
+              <Col span={3}>
                 <Image src='/static/Accreditron.jpg' size={64} />
               </Col>
-              <Col span={22}>
+              <Col span={21}>
                 <Menu
                   theme='dark'
                   mode='horizontal'
                   defaultSelectedKeys={['5']}
                 >
-                  <Menu.Item key='1'>
-                    <Icon type='user' /> My Account
-                  </Menu.Item>
-                  <Menu.Item key='2'> <Icon type='heart' /> Heart </Menu.Item>
-                  <Menu.Item key='3'>
-                    <Icon type='area-chart' /> Data
-                  </Menu.Item>
-                  <Menu.Item key='4'>
-                    <Icon type='file-text' /> Documents
-                  </Menu.Item>
-                  <Menu.Item key='5'> <Icon type='inbox' /> Inbox </Menu.Item>
+                  <Menu.Item key='1' />
                 </Menu>
               </Col>
             </Row>
@@ -49,14 +48,15 @@ export default ({ children }) => (
             style={{ overflow: 'auto' }}
           >
             <Affix>
-              <Menu theme='light' mode='inline' defaultSelectedKeys={['a']}>
-                <Menu.Item key='a'> <Icon type='user' /> My Account </Menu.Item>
-                <Menu.Item key='b'> <Icon type='heart' /> Heart </Menu.Item>
-                <Menu.Item key='c'> <Icon type='area-chart' /> Data </Menu.Item>
-                <Menu.Item key='d'>
-                  <Icon type='file-text' /> Documents
+              <Menu theme='dark' mode='inline' defaultSelectedKeys={['a']}>
+                <Menu.Item key='b'>
+                  <MdDashboard
+                    size={fontSizeLg}
+                    marginRight={parseInt(fontSizeLg) * 1.25}
+                    color={textColorDark}
+                  />
+                  <span>Dashboard</span>
                 </Menu.Item>
-                <Menu.Item key='e'> <Icon type='inbox' /> Inbox </Menu.Item>
               </Menu>
             </Affix>
           </Sider>

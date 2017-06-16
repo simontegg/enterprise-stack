@@ -3,8 +3,9 @@ import { renderToSheetList } from 'fela-dom'
 import getRenderer from '../styles/fela'
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage }) {
+  static getInitialProps ({ renderPage, req }) {
     const page = renderPage()
+    console.log(req.url)
     const renderer = getRenderer()
 
     const sheetList = renderToSheetList(renderer)
