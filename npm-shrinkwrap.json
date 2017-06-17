@@ -1255,6 +1255,11 @@
       "resolved": "https://registry.npmjs.org/dom-closest/-/dom-closest-0.2.0.tgz",
       "integrity": "sha1-69n5HRvyLo1vR3h2u80+yQIWwM8="
     },
+    "dom-helpers": {
+      "version": "3.2.1",
+      "resolved": "https://registry.npmjs.org/dom-helpers/-/dom-helpers-3.2.1.tgz",
+      "integrity": "sha1-MgPgf+0he9H0JLAZc1WC/Deyglo="
+    },
     "dom-matches": {
       "version": "2.0.0",
       "resolved": "https://registry.npmjs.org/dom-matches/-/dom-matches-2.0.0.tgz",
@@ -4346,6 +4351,11 @@
       "version": "0.14.11",
       "resolved": "https://registry.npmjs.org/react-slick/-/react-slick-0.14.11.tgz",
       "integrity": "sha1-wsvb43KMZqL/SSm+ltRX4+oNgPM="
+    },
+    "react-virtualized": {
+      "version": "9.8.0",
+      "resolved": "https://registry.npmjs.org/react-virtualized/-/react-virtualized-9.8.0.tgz",
+      "integrity": "sha512-XTMLpb9pyV1CKqa57uEv70oKMDZfDCJ2WTBwwSmkVjcww/AipN672nKLdL0D7FMhYFxqiKl6t1pPoJxV5QFxsg=="
     },
     "read-cache": {
       "version": "1.0.0",

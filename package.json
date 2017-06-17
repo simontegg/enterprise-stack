@@ -52,6 +52,7 @@
     "react-grid-layout": "^0.14.6",
     "react-icons": "^2.2.5",
     "react-lite": "github:Chieveit/react-lite#with-libs",
+    "react-virtualized": "^9.8.0",
     "styled-jsx": "^1.0.4",
     "stylis": "latest"
   },
