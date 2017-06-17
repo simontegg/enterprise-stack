@@ -1,5 +1,5 @@
 import { createComponent } from 'react-fela'
-import Icon from 'react-icons/lib/md/dashboard'
+import Icon from 'react-icons/lib/md/person'
 
 const rule = ({ color, size }) => ({
   color,

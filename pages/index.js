@@ -1,10 +1,11 @@
 if (process.browser) {
   localStorage.debug = 'vf:*'
 }
+const debug = require('debug')('vf:index')
 
 // import withData from '../apollo/with-data'
 import Head from 'next/head'
-import { AutoSizer } from 'react-virtualized'
+// import { AutoSizer } from 'react-virtualized'
 import { Provider } from 'react-fela'
 
 import Layout from '../layout'
@@ -26,22 +27,14 @@ import getRenderer from '../styles/fela'
 // ))
 
 export default props => (
-  <AutoSizer>
-    {({ height, width }) => {
-      const h = height || 1080
-      const w = width || 1920
-      return (
-        <Provider renderer={getRenderer()}>
-          <div>
-            <Head>
-              <style dangerouslySetInnerHTML={{ __html: styles }} />
-            </Head>
-            <Layout width={width}>
-              <OrganizationList />
-            </Layout>
-          </div>
-        </Provider>
-      )
-    }}
-  </AutoSizer>
+  <Provider renderer={getRenderer()}>
+    <div>
+      <Head>
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
+      </Head>
+      <Layout>
+        <OrganizationList />
+      </Layout>
+    </div>
+  </Provider>
 )
