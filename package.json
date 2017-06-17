@@ -49,6 +49,7 @@
     "react-apollo": "^1.4.2",
     "react-dom": "^15.5.4",
     "react-fela": "^5.0.3",
+    "react-grid-layout": "^0.14.6",
     "react-icons": "^2.2.5",
     "react-lite": "github:Chieveit/react-lite#with-libs",
     "styled-jsx": "^1.0.4",

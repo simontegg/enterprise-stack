@@ -4277,10 +4277,20 @@
         }
       }
     },
+    "react-draggable": {
+      "version": "2.2.6",
+      "resolved": "https://registry.npmjs.org/react-draggable/-/react-draggable-2.2.6.tgz",
+      "integrity": "sha1-OoBuEPLaa6v+pBNr5lEOibDXaQE="
+    },
     "react-fela": {
       "version": "5.0.3",
       "resolved": "https://registry.npmjs.org/react-fela/-/react-fela-5.0.3.tgz",
       "integrity": "sha1-BPPxewA5yEgq3dx99hxpIh89nuE="
+    },
+    "react-grid-layout": {
+      "version": "0.14.6",
+      "resolved": "https://registry.npmjs.org/react-grid-layout/-/react-grid-layout-0.14.6.tgz",
+      "integrity": "sha1-hV6DKXsBefGhO06j1JSUIMrK1zU="
     },
     "react-hot-loader": {
       "version": "3.0.0-beta.7",
@@ -4326,6 +4336,11 @@
       "resolved": "https://registry.npmjs.org/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz",
       "integrity": "sha1-RABCa8+oDKpnJMd1VpUxUgn6Swc=",
       "dev": true
+    },
+    "react-resizable": {
+      "version": "1.7.1",
+      "resolved": "https://registry.npmjs.org/react-resizable/-/react-resizable-1.7.1.tgz",
+      "integrity": "sha1-6P0sIkfJKZ0Rf7JF2+7ZxowOAEw="
     },
     "react-slick": {
       "version": "0.14.11",

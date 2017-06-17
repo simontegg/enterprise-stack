@@ -24,7 +24,10 @@ import styles from '../node_modules/antd/lib/style/index.less'
 
 export default props => (
   <div>
-    <Head />
+    <Head>
+
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
+    </Head>
     <Layout>
       <OrganizationList />
 

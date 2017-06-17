@@ -50,6 +50,9 @@ const addKeys = map(organization =>
 function OrganizationList ({ organizations = forStatic, loading }) {
   return (
     <div>
+      <Head>
+        <style dangerouslySetInnerHTML={{ __html: style }} />
+      </Head>
       {loading
         ? <div>Loading</div>
         : <div style={{ backgroundColor: bodyBackground }}>
