@@ -26,7 +26,7 @@ import getRenderer from '../styles/fela'
 //   </div>
 // ))
 
-export default props => (
+export default props =>
   <Provider renderer={getRenderer()}>
     <div>
       <Head>
@@ -37,4 +37,3 @@ export default props => (
       </Layout>
     </div>
   </Provider>
-)

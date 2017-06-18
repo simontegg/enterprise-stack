@@ -26,9 +26,9 @@ export default class MyDocument extends Document {
   render () {
     const { globalStyles, sheetList } = this.props
 
-    const styleNodes = sheetList.map(({ type, media, css }) => (
+    const styleNodes = sheetList.map(({ type, media, css }) =>
       <style data-fela-type={type} media={media}>{css}</style>
-    ))
+    )
 
     return (
       <html>

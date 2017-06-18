@@ -48,19 +48,19 @@ const targets = {
 }
 
 // tasks
-exports.less = function * (task) {
+exports.less = function*(task) {
   task.serial(['variables', 'mergeAndDiff'])
 }
 
-exports.mergeAndDiff = function * (task) {
+exports.mergeAndDiff = function*(task) {
   task.parallel(['merge', 'diff'])
 }
 
-exports.variables = function * (task) {
+exports.variables = function*(task) {
   yield task
     .source(sources.LESS)
     .run({
-      * func (file) {
+      *func (file) {
         const data = file.data.toString()
 
         const json = yield lessVariablesToJson(data, {
@@ -78,10 +78,10 @@ exports.variables = function * (task) {
     .target(targets.STYLES)
 }
 
-exports.merge = function * (task) {
+exports.merge = function*(task) {
   yield task.source(sources.THEMES).run({
     every: false,
-    * func (files) {
+    *func (files) {
       const merged = parseAndMerge(files)
 
       const data = new Buffer(
@@ -93,10 +93,10 @@ exports.merge = function * (task) {
   })
 }
 
-exports.diff = function * (task) {
+exports.diff = function*(task) {
   yield task.source(sources.THEMES).run({
     every: false,
-    * func (files) {
+    *func (files) {
       const [base, custom] = parse(files)
       const diff = objectDiff(base, custom)
 

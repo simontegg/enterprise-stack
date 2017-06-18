@@ -56,8 +56,8 @@ function OrganizationList ({ organizations = forStatic, loading }) {
       {loading
         ? <div>Loading</div>
         : <div style={{ backgroundColor: bodyBackground }}>
-          <Table columns={columns} dataSource={addKeys(organizations)} />
-        </div>}
+            <Table columns={columns} dataSource={addKeys(organizations)} />
+          </div>}
     </div>
   )
 }

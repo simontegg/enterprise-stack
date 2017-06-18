@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "DEBUG=vf:* node server.js",
     "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "format": "prettier-standard ./**/*.js"
   },
   "repository": {
     "type": "git",
@@ -69,6 +70,7 @@
     "next": "^2.4.1",
     "postcss-easy-import": "^2.1.0",
     "postcss-loader": "^2.0.5",
+    "prettier-standard": "^5.1.0",
     "raw-loader": "^0.5.1",
     "taskr": "^0.9.1",
     "webpack-closure-compiler": "^2.1.4"
