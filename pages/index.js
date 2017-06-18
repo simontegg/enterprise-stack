@@ -9,9 +9,8 @@ import Head from 'next/head'
 import { Provider } from 'react-fela'
 
 import Layout from '../layout'
-import OrganizationList from '../organizations'
+//import OrganizationList from '../organizations'
 
-import styles from '../node_modules/antd/lib/style/index.less'
 import getRenderer from '../styles/fela'
 
 // react apollo
@@ -28,12 +27,5 @@ import getRenderer from '../styles/fela'
 
 export default props =>
   <Provider renderer={getRenderer()}>
-    <div>
-      <Head>
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
-      </Head>
-      <Layout>
-        <OrganizationList />
-      </Layout>
-    </div>
+    <Layout />
   </Provider>

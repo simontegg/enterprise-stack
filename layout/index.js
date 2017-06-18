@@ -1,8 +1,7 @@
 const debug = require('debug')('vf:layout')
 // components
 import Head from 'next/head'
-import { Affix, Avatar, Card, Menu, Popover, Icon, Table } from 'antd'
-import Image from '../components/image'
+import { Icon, Image, Popup, Segment, Sidebar } from 'semantic-ui-react'
 
 // layout
 import Grid from './grid'
@@ -23,47 +22,38 @@ import {
   textColorDark,
   fontSizeBase,
   fontSizeLg,
+  primary2,
   primary5,
   primary6
 } from '../styles/theme'
 import getRenderer from '../styles/fela'
 
-const title = <h3>Ashlyn Baum</h3>
+const title = <h4>Ashlyn Baum</h4>
 
-
-export default ({ width, children }) =>
+export default ({ children }) =>
   <div>
     <Head>
       <style dangerouslySetInnerHTML={{ __html: style }} />
     </Head>
-    <Grid width={width}>
+    <Grid>
       <Logo backgroundColor={primary5}>
-        <Image src='/static/Accreditron.jpg' size={64} />
+        <Image src='/static/Accreditron.jpg' size='tiny' />
       </Logo>
-      <Header backgroundColor={primary6}>
-        <Popover
-          placement='bottomRight'
-          title={title}
-          trigger='click'
-        >
-          <Avatar
-            style={{ marginRight: 24 }}
-            shape='round'
-            size='large'
-            src='https://pbs.twimg.com/profile_images/749417865153875968/kKSDIGnY_400x400.jpg'
-          />
-        </Popover>
+      <Header backgroundColor={primary2}>
+        <Popup
+          trigger={
+            <Image
+              avatar
+              size='mini'
+              src='https://pbs.twimg.com/profile_images/749417865153875968/kKSDIGnY_400x400.jpg'
+            />
+          }
+          content={title}
+          on='click'
+          position='bottom right'
+        />
       </Header>
-      <Sider>
-        <Affix>
-          <Menu theme='dark' mode='inline' defaultSelectedKeys={['a']}>
-            <Menu.Item key='a'>
-              <MdDashboard size={fontSizeLg} color={textColorDark} />
-              <span>Dashboard</span>
-            </Menu.Item>
-          </Menu>
-        </Affix>
-      </Sider>
+      <Sider />
       <Content>
         {children}
       </Content>

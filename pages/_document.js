@@ -2,16 +2,17 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { renderToSheetList } from 'fela-dom'
 import getRenderer from '../styles/fela'
 
-import indexStyle from '../node_modules/antd/lib/style/index.less'
-const styles = {
-  '/': indexStyle
-}
+import styles from '../semantic/src/globals.less'
+// const styles = {
+//   '/': indexStyle
+// }
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage, req }) {
+  static getInitialProps ({ renderPage }) {
     const page = renderPage()
     const renderer = getRenderer()
-    const globalStyles = styles[req.url]
+    //   const globalStyles = styles[req.url]
+    const globalStyles = styles
 
     const sheetList = renderToSheetList(renderer)
     renderer.clear()

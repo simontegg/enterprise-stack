@@ -54,6 +54,7 @@
     "react-icons": "^2.2.5",
     "react-lite": "github:Chieveit/react-lite#with-libs",
     "react-virtualized": "^9.8.0",
+    "semantic-ui": "^2.2.10",
     "styled-jsx": "^1.0.4",
     "stylis": "latest"
   },
@@ -61,6 +62,7 @@
     "autoprefixer": "^7.1.1",
     "babel-plugin-inline-react-svg": "^0.4.0",
     "buffer-json": "^1.0.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "fela": "^5.0.1",
     "fela-dom": "^5.0.2",
     "json-buffer": "^2.0.11",
@@ -72,6 +74,8 @@
     "postcss-loader": "^2.0.5",
     "prettier-standard": "^5.1.0",
     "raw-loader": "^0.5.1",
+    "semantic-ui-less": "^2.2.10",
+    "semantic-ui-react": "^0.68.5",
     "taskr": "^0.9.1",
     "webpack-closure-compiler": "^2.1.4"
   }

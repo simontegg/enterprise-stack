@@ -1,8 +1,7 @@
 const webpack = require('webpack')
-const ClosureCompilerPlugin = require('webpack-closure-compiler')
 const path = require('path')
 const glob = require('glob')
-const theme = require('./styles/diff')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const rules = [
   {
@@ -25,11 +24,10 @@ const rules = [
       {
         loader: 'less-loader',
         options: {
-          includePaths: ['styles', 'node_modules']
+          includePaths: ['semantic', 'node_modules']
             .map(d => path.join(__dirname, d))
             .map(g => glob.sync(g))
-            .reduce((a, c) => a.concat(c), []),
-          modifyVars: theme
+            .reduce((a, c) => a.concat(c), [])
         }
       }
     ]
