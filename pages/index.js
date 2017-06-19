@@ -9,6 +9,7 @@ import Head from 'next/head'
 import { Provider } from 'react-fela'
 
 import Layout from '../layout'
+import CardExample from '../dashboard/card-example'
 //import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
@@ -27,5 +28,8 @@ import getRenderer from '../styles/fela'
 
 export default props =>
   <Provider renderer={getRenderer()}>
-    <Layout />
+    <Layout >
+      <CardExample />
+
+      </Layout>
   </Provider>

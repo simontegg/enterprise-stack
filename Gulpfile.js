@@ -15,7 +15,11 @@ const env = process.env.NODE_ENV || 'development';
 const prod = env === 'production';
 
 const paths = {
-  less: ['semantic/dist/components/site.css', 'semantic/dist/components/reset.css']
+  less: [
+    'semantic/dist/components/site.css', 
+    'semantic/dist/components/reset.css', 
+    'semantic/dist/components/card.css'
+    ]
 }
 
 gulp.task('css', () => {
@@ -30,22 +34,26 @@ gulp.task('css', () => {
     ].concat(plugins);
   }
 
-  const header = 'module.exports = \`'
-//   const header = "// Automatically created 
-//   // until next.js gets CSS support
+  // const header = 'module.exports = \`'
+//   const header = `// Automatically created 
+// // until next.js gets CSS support
 // // https://github.com/zeit/next.js/issues/544
-// export const Styles = () => (
-//   <style>{"
+
+// const css = \``
+
+  const header = `module.exports = \``
 
   const footer = `\``
-
-//   export default Styles
+//   const footer = `\`
+    
+// const Styles = <style>{css}</style>
+// export default Styles`
 
   return gulp.src(paths.less)
     .pipe(plumber())
     // .pipe(less())
+    // .pipe(postcss(plugins))
     .pipe(cleanCSS({ format: 'beautify' }))
-    .pipe(postcss(plugins, { syntax: require('postcss-less')}))
     .pipe(concat('Styles.js'))
     .pipe(inject.prepend(header))
     .pipe(inject.append(footer))

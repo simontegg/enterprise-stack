@@ -4,6 +4,8 @@ const camelize = require('camelize')
 const bufferJson = require('buffer-json')
 const JSONB = require('json-buffer')
 const objectDiff = require('object-diff')
+const postcss = require('postcss')
+const postcssJs = require('postcss-js')
 const {
   adjust,
   curry,
@@ -39,12 +41,14 @@ const parseAndMerge = pipe(parse, mergeAll, camelize, removeAt)
 
 // paths
 const sources = {
+  SEMANTIC_CSS: ['semantic/dist/components/card.css'],
   LESS: './styles/*.less',
   THEMES: './styles/*-theme.js'
 }
 
 const targets = {
-  STYLES: './styles/'
+  STYLES: 'styles/',
+  SEMANTIC_COMPONENTS: './semantic-ui-components/'
 }
 
 // tasks
@@ -56,7 +60,28 @@ exports.mergeAndDiff = function*(task) {
   task.parallel(['merge', 'diff'])
 }
 
-exports.variables = function*(task) {
+
+exports.semantic = function * (task) {
+  yield task 
+    .source(sources.SEMANTIC_CSS)
+    .run({
+      *func (file) {
+        const data = file.data.toString()
+
+        const root = postcss.parse(data)
+        const obj = postcssJs.objectify(root)
+        file.data = new Buffer(
+          `module.exports = ${JSON.stringify(obj, null, '\t')}`
+        )
+
+        file.base = replace('.css', '.js', file.base)
+      }
+    })
+    .target(targets.SEMANTIC_COMPONENTS)
+
+}
+
+exports.variables = function * (task) {
   yield task
     .source(sources.LESS)
     .run({

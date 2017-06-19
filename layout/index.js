@@ -1,14 +1,24 @@
 const debug = require('debug')('vf:layout')
 // components
 import Head from 'next/head'
-import { Icon, Image, Popup, Segment, Sidebar } from 'semantic-ui-react'
+import {
+  Grid,
+  Icon,
+  Image,
+  Menu,
+  Popup,
+  Segment,
+  Sidebar
+} from 'semantic-ui-react'
+const { Column, Row } = Grid
 
 // layout
-import Grid from './grid'
+import GridLayout from './grid'
 import Header from './header'
 import Sider from './sider'
 import Logo from './logo'
 import Content from './content'
+import SideMenu from './side-menu'
 
 // icons
 import MdDashboard from '../components/icons/md-dashboard'
@@ -22,6 +32,7 @@ import {
   textColorDark,
   fontSizeBase,
   fontSizeLg,
+  primary1,
   primary2,
   primary5,
   primary6
@@ -35,11 +46,11 @@ export default ({ children }) =>
     <Head>
       <style dangerouslySetInnerHTML={{ __html: style }} />
     </Head>
-    <Grid>
-      <Logo backgroundColor={primary5}>
+    <GridLayout>
+      <Logo>
         <Image src='/static/Accreditron.jpg' size='tiny' />
       </Logo>
-      <Header backgroundColor={primary2}>
+      <Header backgroundColor={primary1}>
         <Popup
           trigger={
             <Image
@@ -53,9 +64,11 @@ export default ({ children }) =>
           position='bottom right'
         />
       </Header>
-      <Sider />
+      <Sider backgroundColor={primary1}>
+        <SideMenu />
+      </Sider>
       <Content>
         {children}
       </Content>
-    </Grid>
+    </GridLayout>
   </div>

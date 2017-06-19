@@ -1,7 +1,7 @@
 import { createComponent } from 'react-fela'
-import Icon from 'react-icons/lib/md/dashboard'
+import Icon from 'react-icons/lib/md/collections-bookmark'
 
-const rule = ({ color = 'inherit', size }) => ({
+const rule = ({ color, size }) => ({
   color,
   marginRight: `${parseInt(size)}px`
 })
