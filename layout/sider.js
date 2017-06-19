@@ -2,8 +2,10 @@ import { createComponent } from 'react-fela'
 
 const rule = ({ backgroundColor }) => ({
   backgroundColor,
-  'grid-column': 'sider-start / content-start',
-  'grid-row': 'content-start / last'
+  gridColumnStart: 'sider-start',
+  gridColumnEnd: 'content-start',
+  gridRowStart: 'content-start',
+  gridRowEnd: 'last',
 })
 
 export default createComponent(rule, 'aside')

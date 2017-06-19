@@ -1,8 +1,11 @@
 import { createComponent } from 'react-fela'
 
-const rule = () => ({
-  'grid-column': 'content-start',
-  'grid-row': 'content-start'
+const rule = ({ backgroundColor }) => ({
+  backgroundColor,
+  gridColumnStart: 'content-start',
+  gridColumnEnd: 'last',
+  gridRowStart: 'content-start',
+  gridRowEnd: 'last'
 })
 
 export default createComponent(rule, 'content')

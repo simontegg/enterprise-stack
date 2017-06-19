@@ -2,7 +2,7 @@ const debug = require('debug')('vf:layout')
 // components
 import Head from 'next/head'
 import {
-  Grid,
+  // Grid,
   Icon,
   Image,
   Menu,
@@ -10,10 +10,12 @@ import {
   Segment,
   Sidebar
 } from 'semantic-ui-react'
-const { Column, Row } = Grid
+
+import getRenderer from '../styles/fela'
+// const { Column, Row } = Grid
 
 // layout
-import GridLayout from './grid'
+import Grid from './grid'
 import Header from './header'
 import Sider from './sider'
 import Logo from './logo'
@@ -37,7 +39,6 @@ import {
   primary5,
   primary6
 } from '../styles/theme'
-import getRenderer from '../styles/fela'
 
 const title = <h4>Ashlyn Baum</h4>
 
@@ -46,29 +47,31 @@ export default ({ children }) =>
     <Head>
       <style dangerouslySetInnerHTML={{ __html: style }} />
     </Head>
-    <GridLayout>
-      <Logo>
-        <Image src='/static/Accreditron.jpg' size='tiny' />
-      </Logo>
-      <Header backgroundColor={primary1}>
-        <Popup
-          trigger={
+    <Grid>
+    <Logo >
+      <Image src='/static/Accreditron.jpg' size='tiny' />
+    </Logo>
+    <Header>
+      <Popup
+        trigger={
+          <a href='#'>
             <Image
               avatar
               size='mini'
               src='https://pbs.twimg.com/profile_images/749417865153875968/kKSDIGnY_400x400.jpg'
             />
-          }
-          content={title}
-          on='click'
-          position='bottom right'
-        />
-      </Header>
-      <Sider backgroundColor={primary1}>
-        <SideMenu />
-      </Sider>
-      <Content>
-        {children}
-      </Content>
-    </GridLayout>
+          </a>
+        }
+        content={title}
+        on='click'
+        position='bottom right'
+      />
+    </Header>
+    <Sider>
+      <SideMenu />
+    </Sider>
+    <Content backgroundColor={primary1}>
+      {children}
+    </Content>
+    </Grid>
   </div>

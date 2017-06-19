@@ -36,6 +36,7 @@
     "graphql": "^0.9.6",
     "graphql-tag": "^2.2.2",
     "isomorphic-fetch": "^2.2.1",
+    "just-box": "^0.3.0",
     "knex": "^0.13.0",
     "less-variables-to-json": "^1.0.2",
     "object-diff": "0.0.4",
@@ -55,6 +56,7 @@
     "react-lite": "github:Chieveit/react-lite#with-libs",
     "react-style-tag": "^1.3.2",
     "react-virtualized": "^9.8.0",
+    "reflexbox": "^3.0.0-0",
     "semantic-ui": "^2.2.10",
     "styled-jsx": "^1.0.4",
     "stylis": "latest"

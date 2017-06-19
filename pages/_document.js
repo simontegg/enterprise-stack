@@ -1,14 +1,13 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { renderToSheetList } from 'fela-dom'
 import getRenderer from '../styles/fela'
-const GlobalStyles = require('../components/Styles').default.props.children
-
+import GlobalStyles from '../components/Styles'
 
 export default class Doc extends Document {
   static getInitialProps ({ renderPage }) {
     const page = renderPage()
     const renderer = getRenderer()
-  //  renderer.renderStatic(GlobalStyles)
+    //  renderer.renderStatic(GlobalStyles)
     //   const globalStyles = styles[req.url]
 
     const sheetList = renderToSheetList(renderer)

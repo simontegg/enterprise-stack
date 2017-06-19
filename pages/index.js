@@ -5,8 +5,8 @@ const debug = require('debug')('vf:index')
 
 // import withData from '../apollo/with-data'
 import Head from 'next/head'
-// import { AutoSizer } from 'react-virtualized'
 import { Provider } from 'react-fela'
+import { Container, Segment } from 'semantic-ui-react'
 
 import Layout from '../layout'
 import CardExample from '../dashboard/card-example'
@@ -28,8 +28,9 @@ import getRenderer from '../styles/fela'
 
 export default props =>
   <Provider renderer={getRenderer()}>
-    <Layout >
-      <CardExample />
-
-      </Layout>
+    <Layout>
+      <Container>
+        <CardExample />
+      </Container>
+    </Layout>
   </Provider>

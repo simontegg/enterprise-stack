@@ -14,11 +14,15 @@ const inject = require('gulp-inject-string')
 const env = process.env.NODE_ENV || 'development';
 const prod = env === 'production';
 
+// GLOBAL CSS
 const paths = {
-  less: [
+  css: [
     'semantic/dist/components/site.css', 
     'semantic/dist/components/reset.css', 
-    'semantic/dist/components/card.css'
+    //'semantic/dist/components/grid.css',
+    'semantic/dist/components/card.css',
+    'semantic/dist/components/container.css',
+    'semantic/dist/components/segment.css'
     ]
 }
 
@@ -49,9 +53,8 @@ gulp.task('css', () => {
 // const Styles = <style>{css}</style>
 // export default Styles`
 
-  return gulp.src(paths.less)
+  return gulp.src(paths.css)
     .pipe(plumber())
-    // .pipe(less())
     // .pipe(postcss(plugins))
     .pipe(cleanCSS({ format: 'beautify' }))
     .pipe(concat('Styles.js'))
