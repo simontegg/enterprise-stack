@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const glob = require('glob')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const rules = [
   {
@@ -11,10 +10,10 @@ const rules = [
       name: 'dist/[path][name].[ext]'
     }
   },
-  {
-    test: /\.css$/,
-    use: ['babel-loader', 'raw-loader', 'postcss-loader']
-  },
+  // {
+  //   test: /\.css$/,
+  //   use: ['isomorphic-style-loader', 'babel-loader']
+  // },
   {
     test: /\.(le|c)ss$/,
     use: [
@@ -27,7 +26,10 @@ const rules = [
           includePaths: ['semantic', 'node_modules']
             .map(d => path.join(__dirname, d))
             .map(g => glob.sync(g))
-            .reduce((a, c) => a.concat(c), [])
+            .reduce((a, c) => a.concat(c), []),
+          sourceMaps: true,
+          relativeUrls: false
+
         }
       }
     ]
@@ -41,6 +43,7 @@ const production = [
 
 module.exports = {
   webpack: (config, { dev }) => {
+
     rules.forEach(rule => {
       config.module.rules.push(rule)
     })

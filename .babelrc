@@ -4,7 +4,8 @@
   ],
   "plugins": [
     [
-      "inline-react-svg"
+      "inline-react-svg",
+       "styled-jsx/babel"
     ],
     [
       "module-resolver",
@@ -13,23 +14,24 @@
           "."
         ],
         "alias": {
-          "styles": "./styles"
+          "semantic": "./semantic"
         },
         "cwd": "babelrc"
       }
-    ],
-    [
-      "import",
-      {
-        "libraryName": "antd"
-      },
-      "wrap-in-js",
-      {
-        "extensions": [
-          "css$",
-          "less$"
-        ]
-      }
     ]
+    
+    // [
+    //   "import",
+    //   {
+    //     "libraryName": "antd"
+    //   },
+    //   "wrap-in-js",
+    //   {
+    //     "extensions": [
+    //       "css$",
+    //       "less$"
+    //     ]
+    //   }
+    // ]
   ]
 }

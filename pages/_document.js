@@ -1,41 +1,34 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { renderToSheetList } from 'fela-dom'
 import getRenderer from '../styles/fela'
-
-import styles from '../semantic/src/globals.less'
-// const styles = {
-//   '/': indexStyle
-// }
+import GlobalStyles from '../components/Styles'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
     const page = renderPage()
     const renderer = getRenderer()
+    renderer.renderStatic(String(GlobalStyles))
+    console.log({GlobalStyles})
     //   const globalStyles = styles[req.url]
-    const globalStyles = styles
 
     const sheetList = renderToSheetList(renderer)
     renderer.clear()
 
     return {
       ...page,
-      globalStyles,
       sheetList
     }
   }
 
   render () {
-    const { globalStyles, sheetList } = this.props
-
-    const styleNodes = sheetList.map(({ type, media, css }) =>
+    const styleNodes = this.props.sheetList.map(({ type, media, css }) =>
       <style data-fela-type={type} media={media}>{css}</style>
     )
 
     return (
       <html>
         <Head>
-          <title>My page</title>
-          <style>{globalStyles}</style>
+          <title>Accreditron</title>
           {styleNodes}
         </Head>
         <body>
