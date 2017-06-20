@@ -1,5 +1,6 @@
 import { createComponent } from 'react-fela'
 import { Icon, Header, Menu } from 'semantic-ui-react'
+import Router from 'next/router'
 
 import { map } from 'ramda'
 

@@ -7,7 +7,8 @@
     "dev": "DEBUG=vf:* node server.js",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
-    "format": "prettier-standard ./**/*.js"
+    "format": "prettier-standard ./**/*.js",
+    "export": "next export"
   },
   "repository": {
     "type": "git",
@@ -46,9 +47,9 @@
     "prop-types": "^15.5.10",
     "proptypes": "^1.1.0",
     "ramda": "^0.24.1",
-    "react": "^15.5.4",
+    "react": "^15.6.1",
     "react-apollo": "^1.4.2",
-    "react-dom": "^15.5.4",
+    "react-dom": "^15.6.1",
     "react-fela": "^5.0.3",
     "react-grid-layout": "^0.14.6",
     "react-icons": "^2.2.5",
