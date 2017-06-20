@@ -1,6 +1,7 @@
 import { createComponent } from 'react-fela'
 
 const rule = ({ backgroundColor }) => ({
+  paddingTop: '3rem',
   backgroundColor,
   gridColumnStart: 'content-start',
   gridColumnEnd: 'last',

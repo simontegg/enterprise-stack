@@ -53,11 +53,11 @@ module.exports = {
     }
 
     // use react-lite in production client-side
-    config.resolve.alias = {
-      react: 'react-lite',
-      'react-dom': 'react-lite',
-      'create-react-class': 'react-lite/lib/createClass'
-    }
+    // config.resolve.alias = {
+    //   react: 'react-lite',
+    //   'react-dom': 'react-lite',
+    //   'create-react-class': 'react-lite/lib/createClass'
+    // }
 
     production.forEach(plugin => {
       config.plugins.push(plugin)
