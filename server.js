@@ -8,16 +8,24 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+console.log(process.env.PGPASSWORD)
+
 app.prepare().then(() => {
   const server = express()
 
-  //  server.use(
-  //    postgraphql(
-  //      { host: 'localhost', database: 'sq_test', port: 5432 },
-  //      'valueflows',
-  //      { graphiql: true }
-  //    )
-  //  )
+   server.use(
+     postgraphql(
+       { 
+         host: 'localhost', 
+         database: 'sq_test', 
+         port: 5432, 
+         user: 'postgres',
+         password: process.env.PGPASSWORD 
+        },
+       'valueflows',
+       { graphiql: true }
+     )
+   )
 
   server.get('/about', (req, res) => {
     return app.render(req, res, '/about', req.query)

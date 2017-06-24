@@ -3,7 +3,7 @@ if (process.browser) {
 }
 const debug = require('debug')('vf:index')
 
-// import withData from '../apollo/with-data'
+import withData from '../apollo/with-data'
 import Head from 'next/head'
 import { Provider } from 'react-fela'
 import { Container, Segment } from 'semantic-ui-react'
@@ -26,7 +26,7 @@ import getRenderer from '../styles/fela'
 //   </div>
 // ))
 
-export default props =>
+export default withData(props => (
   <Provider renderer={getRenderer()}>
     <Layout>
       <Container>
@@ -34,3 +34,4 @@ export default props =>
       </Container>
     </Layout>
   </Provider>
+))

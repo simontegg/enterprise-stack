@@ -5,7 +5,7 @@ const rule = ({ backgroundColor }) => ({
   gridColumnStart: 'sider-start',
   gridColumnEnd: 'content-start',
   gridRowStart: 'content-start',
-  gridRowEnd: 'last',
+  gridRowEnd: 'last'
 })
 
 export default createComponent(rule, 'aside')

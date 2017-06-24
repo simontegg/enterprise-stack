@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ApolloProvider, getDataFromTree } from 'react-apollo'
 import initApollo from './init-apollo'
+import initRedux from '../store/init-redux'
 
 export default ComposedComponent => {
   return class WithData extends React.Component {
@@ -23,21 +24,21 @@ export default ComposedComponent => {
       // and extract the resulting data
       if (!process.browser) {
         const apollo = initApollo()
+        const redux = initRedux(apollo)
         // Provide the `url` prop data in case a graphql query uses it
         const url = { query: ctx.query, pathname: ctx.pathname }
 
         // Run all graphql queries
         const app = (
-          <ApolloProvider client={apollo}>
+          <ApolloProvider client={apollo} store={redux}>
             <ComposedComponent url={url} {...composedInitialProps} />
           </ApolloProvider>
         )
         await getDataFromTree(app)
 
         // Extract query data from the Apollo's store
-        const state = apollo.getInitialState()
 
-        console.log({ state })
+        const state = redux.getState()
 
         serverState = {
           apollo: {
