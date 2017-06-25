@@ -1,12 +1,12 @@
-if (process.browser) {
-  localStorage.debug = 'vf:*'
-}
 const debug = require('debug')('vf:index')
 
+// main
+import React, { Component } from 'react'
+import redirect from 'next-universal-redirect'
 import withData from '../apollo/with-data'
 import Head from 'next/head'
 import { Provider } from 'react-fela'
-import { Container, Segment } from 'semantic-ui-react'
+//import { Container, Segment } from 'semantic-ui-react'
 
 import Layout from '../layout'
 import CardExample from '../dashboard/card-example'
@@ -14,24 +14,23 @@ import CardExample from '../dashboard/card-example'
 
 import getRenderer from '../styles/fela'
 
-// react apollo
-// export default withData(props => (
-//   <div                                                                                                                                                                                                                                                                                                                                                         >
-//     <Head>
-//       <style dangerouslySetInnerHTML={{ __html: styles }} />
-//     </Head>
-//     <Layout>
-//       <OrganizationList />
-//     </Layout>
-//   </div>
-// ))
+class Index extends Component {
+ static getInitialProps ({ req, res, xhr, pathname }) {
+    const statusCode = res ? res.statusCode : (xhr ? xhr.status : null)
+    return { statusCode }
+  }
 
-export default withData(props => (
-  <Provider renderer={getRenderer()}>
-    <Layout>
-      <Container>
-        <CardExample />
-      </Container>
-    </Layout>
-  </Provider>
-))
+  render () {
+    return (
+      <Provider renderer={getRenderer()}>
+        <Layout>
+        </Layout>
+      </Provider>
+    )
+  }
+}
+
+const redirects = new Map()
+redirects.set('/', '/dashboard')
+
+export default redirect(redirects)(withData(Index))

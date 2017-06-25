@@ -39,6 +39,8 @@
     "just-box": "^0.3.0",
     "knex": "^0.13.0",
     "less-variables-to-json": "^1.0.2",
+    "next-redirect": "^1.0.1",
+    "next-universal-redirect": "^0.1.1",
     "object-diff": "0.0.4",
     "postgraphql": "^3.2.0",
     "preact": "^8.1.0",

@@ -4571,6 +4571,16 @@
       "integrity": "sha512-hSVAi7Y7RXD8CQgnHzJKUj5PLeYtg/MQ3QF/C8uY6gOtFwPC8pKtoaGCiIw0T09QbybuLTrt1EjZaIXhc8UlxA==",
       "dev": true
     },
+    "next-redirect": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/next-redirect/-/next-redirect-1.0.1.tgz",
+      "integrity": "sha1-64S6EvXh1+43/tcIjVbqdHtM7fI="
+    },
+    "next-universal-redirect": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/next-universal-redirect/-/next-universal-redirect-0.1.1.tgz",
+      "integrity": "sha1-fUOdwDc1OdXQYY6VRGkkUaasx40="
+    },
     "no-case": {
       "version": "2.3.1",
       "resolved": "https://registry.npmjs.org/no-case/-/no-case-2.3.1.tgz",

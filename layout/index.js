@@ -31,6 +31,13 @@ import MdCollection from '../components/icons/md-collections-bookmark'
 import MdComment from '../components/icons/md-comment'
 import MdGroup from '../components/icons/md-group'
 
+const menuItems = [
+  { name: 'Dashboard', Icon: MdDashboard, route: '/dashboard' },
+  { name: 'Providers', Icon: MdGroup, route: '/providers' },
+  { name: 'Portfolio', Icon: MdCollection, route: '/portfolio' },
+  { name: 'Activity', Icon: MdComment, route: '/activity' }
+]
+
 // styles
 import style from './layout.less'
 import {
@@ -45,7 +52,7 @@ import {
 
 const title = <h4>Ashlyn Baum</h4>
 
-export default ({ children }) =>
+export default ({ children, pathname }) =>
   <div>
     <Head>
       <style dangerouslySetInnerHTML={{ __html: style }} />
@@ -71,7 +78,7 @@ export default ({ children }) =>
         />
       </Header>
       <Sider>
-        <SideMenu />
+        <SideMenu menuItems={menuItems} activeRoute={pathname} />
       </Sider>
       <Content backgroundColor={primary1}>
         {children}
