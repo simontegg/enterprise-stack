@@ -14,7 +14,7 @@ import CardExample from '../dashboard/card-example'
 
 import getRenderer from '../styles/fela'
 
-export default withData(({ url: { pathname } }) => (
+export default ({ url: { pathname } }) => (
   <Provider renderer={getRenderer()}>
     <Layout pathname={pathname} >
       <Container>
@@ -22,4 +22,4 @@ export default withData(({ url: { pathname } }) => (
       </Container>
     </Layout>
   </Provider>
-))
+)

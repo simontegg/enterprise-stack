@@ -13,19 +13,19 @@ console.log(process.env.PGPASSWORD)
 app.prepare().then(() => {
   const server = express()
 
-   server.use(
-     postgraphql(
-       { 
-         host: 'localhost', 
-         database: 'sq_test', 
-         port: 5432, 
-         user: 'postgres',
-         password: process.env.PGPASSWORD 
-        },
-       'valueflows',
-       { graphiql: true }
-     )
-   )
+  //  server.use(
+  //    postgraphql(
+  //      { 
+  //        host: 'localhost', 
+  //        database: 'sq_test', 
+  //        port: 5432, 
+  //        user: 'postgres',
+  //        password: process.env.PGPASSWORD 
+  //       },
+  //      'valueflows',
+  //      { graphiql: true }
+  //    )
+  //  )
 
   server.get('/about', (req, res) => {
     return app.render(req, res, '/about', req.query)
