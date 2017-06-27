@@ -15,16 +15,10 @@ import CardExample from '../dashboard/card-example'
 import getRenderer from '../styles/fela'
 
 class Index extends Component {
- static getInitialProps ({ req, res, xhr, pathname }) {
-    const statusCode = res ? res.statusCode : (xhr ? xhr.status : null)
-    return { statusCode }
-  }
-
   render () {
     return (
       <Provider renderer={getRenderer()}>
-        <Layout>
-        </Layout>
+        <Layout url={this.props.url}/>
       </Provider>
     )
   }
@@ -34,3 +28,4 @@ const redirects = new Map()
 redirects.set('/', '/dashboard')
 
 export default redirect(redirects)(withData(Index))
+// export default withData(Index)

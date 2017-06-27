@@ -11,6 +11,7 @@
 @horizontalMargin: 0em;
 @margin: @verticalMargin @horizontalMargin;
 @background: #FFFFFF;
+@fontSize: 1.5rem;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: normal;

@@ -30,7 +30,8 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.8);
+  /*color: rgba(0, 0, 0, 0.8);*/
+  color: #011383;
   font-smoothing: antialiased;
 }
 

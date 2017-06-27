@@ -5,7 +5,8 @@ const rule = ({ backgroundColor }) => ({
   backgroundColor,
   gridColumnStart: 'content-start',
   gridColumnEnd: 'last',
-  gridRowStart: 'content-start',
+  // gridRowStart: 'content-start',
+  gridRowStart: 'header-start',
   gridRowEnd: 'last'
 })
 

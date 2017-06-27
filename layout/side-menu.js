@@ -8,23 +8,22 @@ import Link from 'next/link'
 
 import { map } from 'ramda'
 
-const main = props => ({ boxShadow: 'none !important'})
+const main = props => ({ boxShadow: 'none !important' })
 
+const SideMenu = ({ menuItems, activeView, styles: { main } }) => {
 
-const SideMenu = ({ menuItems, activeRoute, styles: { main } }) =>
-  <Menu className={main} fluid vertical pointing color='blue'>
+  return <Menu className={main} fluid vertical pointing >
     {map(({ Icon, name, route }) =>
       <Menu.Item
-        borderless={false}
         key={name}
         name={name}
-        active={route === activeRoute}
+        active={route.query.view === activeView}
         onClick={() => Router.push(route)}
-        onMouseEnter={() => Router.prefetch(route)}
       >
-        <Icon size={16} /> {name}
+        {name}
       </Menu.Item>
     )(menuItems)}
   </Menu>
+}
 
 export default connect({ main })(SideMenu)

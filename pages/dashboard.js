@@ -14,12 +14,10 @@ import CardExample from '../dashboard/card-example'
 
 import getRenderer from '../styles/fela'
 
-export default ({ url: { pathname } }) => (
+export default ({ url }) =>
   <Provider renderer={getRenderer()}>
-    <Layout pathname={pathname} >
+    <Layout url={url}>
       <Container>
-        <CardExample />
       </Container>
     </Layout>
   </Provider>
-)

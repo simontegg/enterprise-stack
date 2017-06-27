@@ -28,6 +28,7 @@
 ---------------*/
 
 .ui.menu {
+  font-size: 1.5rem;
   display: flex;
   margin: @margin;
   font-family: @fontFamily;
@@ -86,10 +87,13 @@
   user-select: none;
 
   background: @itemBackground;
-  padding: @itemVerticalPadding @itemHorizontalPadding;
+  padding: 1.42rem 3.357rem;
+  // padding: @itemVerticalPadding @itemHorizontalPadding;
   text-transform: @itemTextTransform;
-  color: @itemTextColor;
-  font-weight: @itemFontWeight;
+  // color: @itemTextColor;
+  color: #011383;
+  // font-weight: @itemFontWeight;
+  font-weight: bold;
   transition: @itemTransition;
 }
 
@@ -397,7 +401,8 @@
 .ui.menu a.item:hover {
   cursor: pointer;
   background: @hoverItemBackground;
-  color: @hoverItemTextColor;
+  color: #011383;
+  // color: @hoverItemTextColor;
 }
 
 
@@ -420,7 +425,9 @@
 .ui.menu .active.item  {
   background: @activeItemBackground;
   color: @activeItemTextColor;
-  font-weight: @activeItemFontWeight;
+  
+  font-weight: bold;
+  // font-weight: @activeItemFontWeight;
   box-shadow: @activeItemBoxShadow;
 }
 .ui.menu .active.item > i.icon {
@@ -433,8 +440,10 @@
 
 .ui.menu .active.item:hover,
 .ui.vertical.menu .active.item:hover {
-  background-color: @activeHoverItemBackground;
-  color: @activeHoverItemColor;
+  background: #0bccc0;
+  color: #ffffff;
+  // background-color: @activeHoverItemBackground;
+  // color: @activeHoverItemColor;
 }
 
 
@@ -528,7 +537,9 @@ Floated Menu / Item
   content: '';
   top: 0%;
   left: 0px;
-  width: 100%;
+  
+  width: 0px;
+  // width: 100%;
   height: @dividerSize;
   background: @verticalDividerBackground;
 }
@@ -550,7 +561,8 @@ Floated Menu / Item
 }
 .ui.vertical.menu .item .menu a.item:hover,
 .ui.vertical.menu .item .menu .link.item:hover {
-  color: @darkTextColor;
+  color: #011383;
+  // color: @darkTextColor;
 }
 .ui.vertical.menu .menu .item:before {
   display: none;
@@ -558,7 +570,9 @@ Floated Menu / Item
 
 /* Vertical Active */
 .ui.vertical.menu .active.item {
-  background: @activeItemBackground;
+  background: #0bccc0;
+  color: #ffffff;
+  // background: @activeItemBackground;
   border-radius: 0em;
   box-shadow: @verticalActiveBoxShadow;
 }
@@ -1795,7 +1809,8 @@ Floated Menu / Item
 
 /* Active */
 .ui.pointing.menu .active.item:after {
-  visibility: visible;
+  // visibility: visible;
+  visibility: hidden;
 }
 .ui.pointing.menu .active.dropdown.item:after {
   visibility: hidden;
@@ -1924,7 +1939,8 @@ Floated Menu / Item
 
 /* Medium */
 .ui.menu {
-  font-size: @medium;
+  // font-size: @medium;
+  font-size: 1.286rem;
 }
 .ui.vertical.menu {
   width: @mediumWidth;

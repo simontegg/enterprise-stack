@@ -48,8 +48,9 @@ module.exports = {
       config.module.rules.push(rule)
     })
 
+
     if (dev) {
-      return config
+      return Object.assign({}, config, { devtool: 'cheap-module-source-map' })
     }
 
     // use react-lite in production client-side
