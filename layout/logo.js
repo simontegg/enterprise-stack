@@ -13,8 +13,8 @@ const rule = ({ backgroundColor }) => ({
 })
 
 export default createComponent(rule, 'aside')
-  // justifyContent: 'center',
-  // gridColumnStart: 'sider-start',
-  // gridColumnEnd: 'content-start',
-  // gridRowStart: 'header-start',
-  // gridRowEnd: 'content-start',
+// justifyContent: 'center',
+// gridColumnStart: 'sider-start',
+// gridColumnEnd: 'content-start',
+// gridRowStart: 'header-start',
+// gridRowEnd: 'content-start',

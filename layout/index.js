@@ -38,7 +38,11 @@ import MdComment from '../components/icons/md-comment'
 import MdGroup from '../components/icons/md-group'
 
 const menuItems = [
-  { name: 'About', Icon: MdDashboard, route: { pathname: '/dashboard', query: { view: ''} } },
+  {
+    name: 'About',
+    Icon: MdDashboard,
+    route: { pathname: '/dashboard', query: { view: '' } }
+  },
   {
     name: 'Services',
     Icon: MdNaturePeople,
@@ -49,7 +53,7 @@ const menuItems = [
     Icon: MdRecentActors,
     route: { pathname: '/dashboard', query: { view: 'governance' } }
   },
-                                                                                                                                                  {   
+  {
     name: 'Staffing',
     Icon: MdGroup,
     route: { pathname: '/dashboard', query: { view: 'staffing' } }
@@ -108,21 +112,19 @@ export default ({ children, url: { query: { view } } }) =>
     </Grid>
   </div>
 
-
-
-      // <Header>
-      //   <Popup
-      //     trigger={
-      //       <a href='#'>
-      //         <Image
-      //           avatar
-      //           size='mini'
-      //           src='https://pbs.twimg.com/profile_images/749417865153875968/kKSDIGnY_400x400.jpg'
-      //         />
-      //       </a>
-      //     }
-      //     content={title}
-      //     on='click'
-      //     position='bottom right'
-      //   />
-      // </Header>
+// <Header>
+//   <Popup
+//     trigger={
+//       <a href='#'>
+//         <Image
+//           avatar
+//           size='mini'
+//           src='https://pbs.twimg.com/profile_images/749417865153875968/kKSDIGnY_400x400.jpg'
+//         />
+//       </a>
+//     }
+//     content={title}
+//     on='click'
+//     position='bottom right'
+//   />
+// </Header>

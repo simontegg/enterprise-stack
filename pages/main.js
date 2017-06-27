@@ -10,13 +10,16 @@ import { Container, Segment } from 'semantic-ui-react'
 
 import Layout from '../layout'
 import CardExample from '../dashboard/card-example'
-//import OrganizationList from '../organizations'
+import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
 
-export default ({ url }) =>
+export default withData(({ url }) => (
   <Provider renderer={getRenderer()}>
     <Layout url={url}>
-      <Container />
+      <Container >
+        <OrganizationList />
+      </Container>
     </Layout>
   </Provider>
+))

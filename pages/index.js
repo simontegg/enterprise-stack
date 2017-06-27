@@ -18,7 +18,7 @@ class Index extends Component {
   render () {
     return (
       <Provider renderer={getRenderer()}>
-        <Layout url={this.props.url}/>
+        <Layout url={this.props.url} />
       </Provider>
     )
   }
@@ -27,5 +27,5 @@ class Index extends Component {
 const redirects = new Map()
 redirects.set('/', '/dashboard')
 
-export default redirect(redirects)(withData(Index))
-// export default withData(Index)
+// export default redirect(redirects)(withData(Index))
+export default withData(Index)
