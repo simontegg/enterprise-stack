@@ -45,7 +45,9 @@ const addKeys = map(organization =>
   merge(organization, { key: organization.name })
 )
 
-function OrganizationList ({ data: { allOrganizations: { nodes } } }) {
+function OrganizationList ({ data }) {
+  const allOrganizations = data.allOrganizations || {}
+  const nodes = allOrganizations.node || []
 
   return (
     <div>
@@ -61,13 +63,11 @@ function OrganizationList ({ data: { allOrganizations: { nodes } } }) {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {
-                map(({ name }) => (
-                  <Table.Row>
-                    <Table.Cell>{ name }</Table.Cell>
-                  </Table.Row>
-                ))(nodes)
-              }
+              {map(({ name }) =>
+                <Table.Row>
+                  <Table.Cell>{name}</Table.Cell>
+                </Table.Row>
+              )(nodes)}
             </Table.Body>
 
           </Table>}

@@ -28,4 +28,4 @@ const redirects = new Map()
 redirects.set('/', '/dashboard')
 
 // export default redirect(redirects)(withData(Index))
-export default withData(Index)
+export default Index

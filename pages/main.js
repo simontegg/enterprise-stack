@@ -14,12 +14,11 @@ import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
 
-export default withData(({ url }) => (
+export default ({ url }) =>
   <Provider renderer={getRenderer()}>
     <Layout url={url}>
-      <Container >
+      <Container>
         <OrganizationList />
       </Container>
     </Layout>
   </Provider>
-))

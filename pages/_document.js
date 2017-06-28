@@ -1,7 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { renderToSheetList } from 'fela-dom'
 import getRenderer from '../styles/fela'
-import GlobalStyles from '../components/Styles'
+import GlobalStyles from '../styles/global-styles'
 
 export default class Doc extends Document {
   static getInitialProps ({ renderPage }) {

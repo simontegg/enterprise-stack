@@ -82,15 +82,6 @@ const menuItems = [
 
 // styles
 import style from './layout.less'
-import {
-  textColorDark,
-  fontSizeBase,
-  fontSizeLg,
-  primary1,
-  primary2,
-  primary5,
-  primary6
-} from '../styles/theme'
 
 const title = <h4>Ashlyn Baum</h4>
 
@@ -101,12 +92,14 @@ export default ({ children, url: { query: { view } } }) =>
     </Head>
     <Grid>
       <Logo>
-        <Image src='/static/AT.png' size={60} marginLeft={41} marginTop={24} />
+        <Image src='/static/AT.png' size={64} marginLeft={64} />
       </Logo>
+      <Header />
+      
       <Sider>
         <SideMenu menuItems={menuItems} activeView={view} />
       </Sider>
-      <Content backgroundColor={primary1}>
+      <Content >
         {children}
       </Content>
     </Grid>
