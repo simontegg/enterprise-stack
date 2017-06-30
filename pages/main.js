@@ -18,7 +18,7 @@ export default ({ url }) =>
   <Provider renderer={getRenderer()}>
     <Layout url={url}>
       <Container>
-        <OrganizationList />
+        {/*<OrganizationList />*/}
       </Container>
     </Layout>
   </Provider>

@@ -6,7 +6,6 @@ import Head from 'next/head'
 import { Table, Icon } from 'semantic-ui-react'
 
 import style from './organizations.less'
-import { bodyBackground } from '../styles/theme'
 
 const forStatic = [
   { name: 'test' },
