@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo'
 import { map, merge } from 'ramda'
 
 import Head from 'next/head'
-import { Table } from 'antd'
+import { Table, Icon } from 'semantic-ui-react'
 
 import style from './organizations.less'
 import { bodyBackground } from '../styles/theme'
@@ -40,50 +40,64 @@ const columns = [
     key: 'name'
   }
 ]
-// const addKeys = map(organization =>
-//  merge(organization, { key: organization.id })
-// )
 
 const addKeys = map(organization =>
   merge(organization, { key: organization.name })
 )
-function OrganizationList ({ organizations = forStatic, loading }) {
+
+function OrganizationList ({ data }) {
+  const allOrganizations = data.allOrganizations || {}
+  const nodes = allOrganizations.node || []
+
   return (
     <div>
       <Head>
         <style dangerouslySetInnerHTML={{ __html: style }} />
       </Head>
-      {loading
+      {null
         ? <div>Loading</div>
-        : <div style={{ backgroundColor: bodyBackground }}>
-            <Table columns={columns} dataSource={addKeys(organizations)} />
-          </div>}
+        : <Table celled striped>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell colSpan='3'>Organisations</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {map(({ name }) =>
+                <Table.Row>
+                  <Table.Cell>{name}</Table.Cell>
+                </Table.Row>
+              )(nodes)}
+            </Table.Body>
+
+          </Table>}
     </div>
   )
 }
 
-// for static
-export default OrganizationList
+// // for static
+// export default OrganizationList
 
-// export default graphql(
-//  gql`
-//  query allOrganizations($first: Int!) {
-//    allOrganizations(first: $first, orderBy: NAME_ASC) {
-//      nodes {
-//        id,
-//        name
-//    }
-//    }
-//  }`,
-//  {
-//    options: {
-//      variables: {
-//        first: AGENTS_PER_PAGE
-//      }
-//    },
-//    props: ({ data: { allOrganizations: { nodes }, loading } }) => ({
-//      organizations: nodes,
-//      loading
-//    })
-//  }
-// )(OrganizationList)
+export default graphql(
+  gql`
+ query allOrganizations($first: Int!) {
+   allOrganizations(first: $first, orderBy: NAME_ASC) {
+     nodes {
+       id,
+       name
+   }
+   }
+ }`,
+  {
+    options: {
+      variables: {
+        first: AGENTS_PER_PAGE
+      }
+    },
+    props: ({ data }) => ({
+      data
+      // organizations: nodes,
+      // loading
+    })
+  }
+)(OrganizationList)

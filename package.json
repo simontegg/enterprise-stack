@@ -43,6 +43,7 @@
     "less-variables-to-json": "^1.0.2",
     "next-redirect": "^1.0.1",
     "next-universal-redirect": "^0.1.1",
+    "normalize.css": "^7.0.0",
     "object-diff": "0.0.4",
     "postgraphql": "^3.2.0",
     "preact": "^8.1.0",
@@ -62,7 +63,8 @@
     "reflexbox": "^3.0.0-0",
     "require-dot-file": "^0.4.0",
     "styled-jsx": "^1.0.4",
-    "stylis": "latest"
+    "stylis": "latest",
+    "tachyons": "^4.7.4"
   },
   "devDependencies": {
     "auto-prefixer": "^0.4.2",
