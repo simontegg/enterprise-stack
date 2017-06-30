@@ -14,9 +14,10 @@ import CardExample from '../dashboard/card-example'
 
 import getRenderer from '../styles/fela'
 
-export default ({ url }) =>
+export default withData(({ url }) =>
   <Provider renderer={getRenderer()}>
     <ThemeProvider theme={theme}>
       <Layout url={url} />
     </ThemeProvider>
   </Provider>
+)

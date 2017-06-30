@@ -14,7 +14,7 @@ import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
 
-export default ({ url }) =>
+export default withData(({ url }) =>
   <Provider renderer={getRenderer()}>
     <Layout url={url}>
       <Container>
@@ -22,3 +22,4 @@ export default ({ url }) =>
       </Container>
     </Layout>
   </Provider>
+)
