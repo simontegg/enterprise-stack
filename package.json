@@ -9,7 +9,8 @@
     "start": "NODE_ENV=production node server.js",
     "format": "prettier-standard ./**/*.js",
     "export": "next export",
-    "test": "ava test/*.js"
+    "test": "ava test/*.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
