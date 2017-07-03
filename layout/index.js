@@ -77,7 +77,6 @@ const title = <h4>Ashlyn Baum</h4>
 export default ({ children, url: { query: { view } } }) =>
   <div>
     <Head>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
     </Head>
     <Grid>
       <Logo>
