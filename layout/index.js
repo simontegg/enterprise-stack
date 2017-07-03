@@ -1,15 +1,6 @@
 const debug = require('debug')('vf:layout')
 // components
 import Head from 'next/head'
-import {
-  // Grid,
-  Icon,
-  // Image,
-  Menu,
-  Popup,
-  Segment,
-  Sidebar
-} from 'semantic-ui-react'
 
 import getRenderer from '../styles/fela'
 // const { Column, Row } = Grid
@@ -80,8 +71,6 @@ const menuItems = [
   }
 ]
 
-// styles
-import style from './layout.less'
 
 const title = <h4>Ashlyn Baum</h4>
 

@@ -14,26 +14,26 @@ const rules = [
   //   test: /\.css$/,
   //   use: ['isomorphic-style-loader', 'babel-loader']
   // },
-  {
-    test: /\.(le|c)ss$/,
-    use: [
-      'babel-loader',
-      'raw-loader',
-      'postcss-loader',
-      {
-        loader: 'less-loader',
-        options: {
-          includePaths: ['semantic', 'node_modules']
-            .map(d => path.join(__dirname, d))
-            .map(g => glob.sync(g))
-            .reduce((a, c) => a.concat(c), []),
-          sourceMaps: true,
-          relativeUrls: false
-
-        }
-      }
-    ]
-  }
+//  {
+//    test: /\.(le|c)ss$/,
+//    use: [
+//      'babel-loader',
+//      'raw-loader',
+//      'postcss-loader',
+//      {
+//        loader: 'less-loader',
+//        options: {
+//          includePaths: ['semantic', 'node_modules']
+//            .map(d => path.join(__dirname, d))
+//            .map(g => glob.sync(g))
+//            .reduce((a, c) => a.concat(c), []),
+//          sourceMaps: true,
+//          relativeUrls: false
+//
+//        }
+//      }
+//    ]
+//  }
 ]
 
 const production = [

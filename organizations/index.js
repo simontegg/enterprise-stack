@@ -4,9 +4,8 @@ import { gql, graphql } from 'react-apollo'
 import { map, merge } from 'ramda'
 
 import Head from 'next/head'
-import { Table, Icon } from 'semantic-ui-react'
+//import { Table, Icon } from 'semantic-ui-react'
 
-import style from './organizations.less'
 
 
 

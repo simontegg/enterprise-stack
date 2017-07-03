@@ -9,8 +9,7 @@ import { Provider, ThemeProvider } from 'react-fela'
 import theme from '../styles/fela-theme'
 
 import Layout from '../layout'
-import CardExample from '../dashboard/card-example'
-import OrganizationList from '../organizations'
+//import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
 
