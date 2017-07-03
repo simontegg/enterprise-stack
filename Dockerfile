@@ -1,4 +1,4 @@
-FROM node:7.7.2-alpine
+FROM mhart/alpine-node-auto:latest
 
 COPY package.json /tmp/package.json
 COPY package-lock.json /tmp/package-lock.json

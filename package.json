@@ -8,7 +8,8 @@
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
     "format": "prettier-standard ./**/*.js",
-    "export": "next export"
+    "export": "next export",
+    "test": "ava test/*.js"
   },
   "repository": {
     "type": "git",
