@@ -2,8 +2,6 @@ const express = require('express')
 const next = require('next')
 const { postgraphql } = require('postgraphql')
 
-const serverConfig = require('./server.config')
-
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 3000
 
