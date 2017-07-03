@@ -9,5 +9,5 @@ RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 WORKDIR /opt/app
 ADD . /opt/app
 
-EXPOSE $PORT
+EXPOSE 3000
 CMD PORT=$PORT npm start
