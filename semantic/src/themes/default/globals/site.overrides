@@ -1,7 +1,0 @@
-/*******************************
-        Global Overrides
-*******************************/
-@googleFontRequest : 'Lato:400,700,400italic,700italic&subset=latin'
-@headerFont        : @fontName, Arial, Helvetica, sans-serif;
-@pageFont          : @fontName, Arial, Helvetica, sans-serif;
-

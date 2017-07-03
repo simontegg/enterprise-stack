@@ -10,14 +10,14 @@ import theme from '../styles/fela-theme'
 
 import Layout from '../layout'
 import CardExample from '../dashboard/card-example'
-//import OrganizationList from '../organizations'
+import OrganizationList from '../organizations'
 
 import getRenderer from '../styles/fela'
 
-export default withData(({ url }) =>
+export default ({ url }) =>
   <Provider renderer={getRenderer()}>
     <ThemeProvider theme={theme}>
-      <Layout url={url} />
+      <Layout url={url} >
+      </Layout>
     </ThemeProvider>
   </Provider>
-)

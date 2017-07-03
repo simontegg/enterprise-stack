@@ -1,3 +1,4 @@
+// TODO remove semantic
 const debug = require('debug')('vf:organizations:index')
 import { gql, graphql } from 'react-apollo'
 import { map, merge } from 'ramda'
@@ -7,29 +8,7 @@ import { Table, Icon } from 'semantic-ui-react'
 
 import style from './organizations.less'
 
-const forStatic = [
-  { name: 'test' },
-  { name: 'test1' },
-  { name: 'test2' },
-  { name: 'test3' },
-  { name: 'test4' },
-  { name: 'test5' },
-  { name: 'test6' },
-  { name: 'test7' },
-  { name: 'test8' },
-  { name: 'test9' },
-  { name: 'test10' },
-  { name: 'test11' },
-  { name: 'test12' },
-  { name: 'test13' },
-  { name: 'test14' },
-  { name: 'test15' },
-  { name: 'test16' },
-  { name: 'test17' },
-  { name: 'test18' },
-  { name: 'test19' },
-  { name: 'test20' }
-]
+
 
 const AGENTS_PER_PAGE = 10
 const columns = [
@@ -44,16 +23,16 @@ const addKeys = map(organization =>
   merge(organization, { key: organization.name })
 )
 
-function OrganizationList ({ data }) {
-  const allOrganizations = data.allOrganizations || {}
-  const nodes = allOrganizations.node || []
-
+function OrganizationList ({ allOrganizations, loading }) {
+  console.log("loading", loading)
   return (
     <div>
       <Head>
         <style dangerouslySetInnerHTML={{ __html: style }} />
       </Head>
-      {null
+      <label> Create a new organization </label>
+      <input type="text" name="org"/>
+      {loading
         ? <div>Loading</div>
         : <Table celled striped>
             <Table.Header>
@@ -66,7 +45,7 @@ function OrganizationList ({ data }) {
                 <Table.Row>
                   <Table.Cell>{name}</Table.Cell>
                 </Table.Row>
-              )(nodes)}
+              )(allOrganizations.nodes)}
             </Table.Body>
 
           </Table>}
@@ -93,10 +72,15 @@ export default graphql(
         first: AGENTS_PER_PAGE
       }
     },
-    props: ({ data }) => ({
-      data
+    props: ({ data }) => {
+      return{
+        allOrganizations : data.allOrganizations || {},
+        // nodes : allOrganizations.nodes || [],
+      // data,
       // organizations: nodes,
-      // loading
-    })
+      loading : data.loading
+      }
+    }
   }
 )(OrganizationList)
+

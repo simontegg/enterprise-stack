@@ -18,8 +18,8 @@ const prod = env === 'production'
 const paths = {
   css: [
     './node_modules/normalize.css/normalize.css',
-    './styles/site.css', // semantic's general settings
-    './styles/styles.css' // semantic's general settings
+    './styles/site.css', 
+    './styles/styles.css' 
     ],
   styles: 'styles'
 }
