@@ -12,9 +12,8 @@ pipeline:
       - npm run build
       - npm test
 
-  publish:
-    docker:
-      image: plugins/docker
-      registry: registry.gitlab.com
-      repo: registry.gitlab.com/simontegg/enterprise-stack
-      secrets: [docker_username, docker_password]
+  docker:
+    image: plugins/docker
+    registry: registry.gitlab.com
+    repo: registry.gitlab.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
