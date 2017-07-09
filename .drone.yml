@@ -11,3 +11,9 @@ pipeline:
       - npm i
       - npm run build
       - npm test
+
+  publish:
+    image: plugins/docker
+    repo: registry.gitlab.com/simontegg/enterprise-stack
+    username: ${DOCKER_USERNAME}
+    password: ${DOCKER_PASSWORD}
