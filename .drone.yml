@@ -1,0 +1,13 @@
+pipeline:
+  build:
+    image: mhart/alpine-node-auto:latest
+    commands:
+      - npm i
+      - npm run build
+
+  test:
+    image: mhart/alpine-node-auto:latest
+    commands:
+      - npm i
+      - npm run build
+      - npm test
