@@ -9,6 +9,7 @@ pipeline:
         - node_modules
         - .git
 
+
   test:
     image: dmitry7887/alpine-node-git
     commands:
