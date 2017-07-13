@@ -28,3 +28,4 @@ pipeline:
     secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
     service: Accreditron/staging
     docker_image: registry.gitlab.com/simontegg/enterprise-stack
+    confirm: true
