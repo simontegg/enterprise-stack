@@ -7,17 +7,32 @@ const readFileAsync = promisify(fs.readFile)
 // modules
 const knex = require('../../db')
 
-test('schema', async done => {
+beforeAll(() => {
+  return knex.migrate.latest()
+})
+
+afterAll(() => {
+  return knex.migrate.rollback()
+    .then(() => {
+      knex.destroy() 
+    })
+})
+
+test('schema', async () => {
   const filepath = path.join(__dirname, '../../db/verify/valueflows-schema.sql')
-  const verify = await readFileAsync(filepath, 'utf8')
 
-  const result = await knex.raw(verify)
+  try {
+    const verify = await readFileAsync(filepath, 'utf8')
+    const result = await knex.raw(verify)
 
-  console.log(result)
+    for (let row of result.rows) {
+      for (let key in row) {
+        expect(row[key]).toEqual(true)
+      }
+    }
 
-  expect(1).toBe(1)
-
-  
-
+  } catch (err) {
+    return Promise.reject(err)
+  }
 })
   

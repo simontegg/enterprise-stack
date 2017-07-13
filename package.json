@@ -11,6 +11,22 @@
     "export": "next export",
     "test": "jest fake"
   },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "globals": {
+      "NODE_ENV": "test"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simontegg/valueflows-gql.git"
@@ -54,10 +70,13 @@
     "ava": "^0.20.0",
     "babel-jest": "^20.0.3",
     "babel-plugin-inline-react-svg": "^0.4.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "buffer-json": "^1.0.0",
     "cssnano": "^3.10.0",
     "fela": "^5.0.1",
     "fela-dom": "^5.0.2",
+    "glob-fs": "^0.1.6",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.4.2",
     "gulp-concat": "^2.6.1",

@@ -3,21 +3,9 @@
     "next/babel"
   ],
   "plugins": [
-    [
       "inline-react-svg",
-       "styled-jsx/babel"
-    ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          "."
-        ],
-        "alias": {
-          "semantic": "./semantic"
-        },
-        "cwd": "babelrc"
-      }
+      "syntax-async-functions",
+      "transform-es2015-modules-commonjs"
     ]
     
     // [
@@ -33,5 +21,4 @@
     //     ]
     //   }
     // ]
-  ]
 }
