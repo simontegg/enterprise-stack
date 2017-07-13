@@ -21,6 +21,7 @@ afterAll(() => {
 test('schema', async () => {
   const filepath = path.join(__dirname, '../../db/verify/valueflows-schema.sql')
 
+
   try {
     const verify = await readFileAsync(filepath, 'utf8')
     const result = await knex.raw(verify)
