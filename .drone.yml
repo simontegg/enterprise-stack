@@ -1,13 +1,13 @@
 pipeline:
   build:
-    image: registry.gitlab.com/simontegg/enterprise-stack
+    image: dmitry7887/alpine-node-git
     secrets: [docker_username, docker_password]
     commands:
       - npm install
       - npm run build
 
   test:
-    image: registry.gitlab.com/simontegg/enterprise-stack
+    image: dmitry7887/alpine-node-git
     secrets: [docker_username, docker_password]
     commands:
       - npm install
