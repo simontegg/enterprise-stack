@@ -1,14 +1,16 @@
 pipeline:
   build:
     image: dmitry7887/alpine-node-git
-    secrets: [docker_username, docker_password]
     commands:
       - npm install
       - npm run build
+    cache:
+      mount: 
+        - node_modules
+        - .git
 
   test:
     image: dmitry7887/alpine-node-git
-    secrets: [docker_username, docker_password]
     commands:
       - npm install
       - npm run build
