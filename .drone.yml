@@ -1,12 +1,14 @@
 pipeline:
   build:
-    image: mhart/alpine-node-auto:latest
+    image: registry.gitlab.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
     commands:
       - npm install
       - npm run build
 
   test:
-    image: mhart/alpine-node-auto:latest
+    image: registry.gitlab.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
     commands:
       - npm run build
       - npm test
