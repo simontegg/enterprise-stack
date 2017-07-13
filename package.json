@@ -96,7 +96,6 @@
     "prettier-standard": "^5.1.0",
     "raw-loader": "^0.5.1",
     "styled-jsx-postcss": "^0.2.0",
-    "taskr": "^0.9.1",
-    "testcafe": "^0.16.2"
+    "taskr": "^0.9.1"
   }
 }
