@@ -44,3 +44,9 @@ pipeline:
     docker_image: registry.gitlab.com/simontegg/enterprise-stack
     timeout: 60
     confirm: true
+
+services:
+  drone-server:
+    image: drone/drone:0.5
+    environment:
++     DRONE_ADMIN: simontegg
