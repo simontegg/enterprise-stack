@@ -16,12 +16,6 @@ pipeline:
       - npm run build
       - npm test
 
-  docker:
-    image: plugins/docker
-    registry: registry.gitlab.com
-    repo: registry.gitlab.com/simontegg/enterprise-stack
-    secrets: [docker_username, docker_password]
-
   rancher:
     image: peloton/drone-rancher
     url: http://104.237.4.81:8080
