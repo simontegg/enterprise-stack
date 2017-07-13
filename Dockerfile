@@ -1,4 +1,8 @@
-FROM mhart/alpine-node-auto:latest
+FROM jkilbride/node-npm-alpine:8
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
 
 COPY package.json /tmp/package.json
 COPY package-lock.json /tmp/package-lock.json
