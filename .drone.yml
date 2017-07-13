@@ -3,6 +3,8 @@ pipeline:
     image: registry.gitlab.com/simontegg/enterprise-stack
     secrets: [docker_username, docker_password]
     commands:
+      - ls
+      - which git
       - npm install
       - npm run build
 
@@ -10,6 +12,7 @@ pipeline:
     image: registry.gitlab.com/simontegg/enterprise-stack
     secrets: [docker_username, docker_password]
     commands:
+      - npm install
       - npm run build
       - npm test
 
