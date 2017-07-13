@@ -1,4 +1,18 @@
 pipeline:
+  build:
+    image: registry.gitlab.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
+    commands:
+      - npm install
+      - npm run build
+
+  test:
+    image: registry.gitlab.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
+    commands:
+      - npm install
+      - npm run build
+      - npm test
 
   docker:
     image: plugins/docker
@@ -10,5 +24,5 @@ pipeline:
     image: peloton/drone-rancher
     url: http://104.237.4.81:8080
     secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
-    service: Accreditron/web
+    service: Accreditron/staging
     docker_image: registry.gitlab.com/simontegg/enterprise-stack
