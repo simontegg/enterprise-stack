@@ -21,7 +21,6 @@ pipeline:
   rancher:
     image: peloton/drone-rancher
     url: http://104.237.4.81:8080
-    access_key: ${PLUGIN_ACCESS_KEY}
-    secret_key: ${PLUGIN_SECRET_KEY}
+    secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
     service: Accreditron/web
     docker_image: registry.gitlab.com/simontegg/enterprise-stack

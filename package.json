@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production node server.js",
     "format": "prettier-standard ./**/*.js",
     "export": "next export",
-    "test": "ava test/*.js"
+    "test": "jest fake"
   },
   "repository": {
     "type": "git",
@@ -52,6 +52,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "ava": "^0.20.0",
+    "babel-jest": "^20.0.3",
     "babel-plugin-inline-react-svg": "^0.4.0",
     "buffer-json": "^1.0.0",
     "cssnano": "^3.10.0",
