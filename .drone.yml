@@ -2,6 +2,7 @@ pipeline:
   build:
     image: mhart/alpine-node-auto:latest
     commands:
+      - npm install
       - npm run build
 
   test:
