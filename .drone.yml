@@ -40,7 +40,7 @@ pipeline:
     image: peloton/drone-rancher
     url: http://104.237.4.81:8080
     secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
-    service: Accreditron/staging
+    service: accreditron/staging
     docker_image: registry.gitlab.com/simontegg/enterprise-stack
-    timeout: 240
+    timeout: 360
     confirm: true
