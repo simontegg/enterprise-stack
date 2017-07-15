@@ -41,7 +41,7 @@ pipeline:
     url: http://104.237.4.81:8080
     secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
     service: accreditron/staging
-    docker_imagep: r.cfcr.io/simontegg/simontegg/enterprisestack
+    docker_image: r.cfcr.io/simontegg/simontegg/enterprisestack
     timeout: 360
     confirm: true
   
