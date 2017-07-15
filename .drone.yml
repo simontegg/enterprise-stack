@@ -24,6 +24,7 @@ pipeline:
       - ./node_modules
     volumes:
       - /tmp/cache:/cache
+
   test:
     image: simontegg/alpine-node-git
     commands:
@@ -32,7 +33,7 @@ pipeline:
   docker:
     image: plugins/docker
     registry: registry.gitlab.com
-    repo: registry.gitlab.com/simontegg/enterprise-stack
+    repo: r.cfcr.io/simontegg/simontegg/enterprisestack
     secrets: [docker_username, docker_password]
 
   rancher:
@@ -43,3 +44,4 @@ pipeline:
     docker_image: registry.gitlab.com/simontegg/enterprise-stack
     timeout: 360
     confirm: true
+  
