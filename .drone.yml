@@ -32,7 +32,7 @@ pipeline:
 
   docker:
     image: plugins/docker
-    registry: registry.gitlab.com
+    registry: r.cfcr.io
     repo: r.cfcr.io/simontegg/simontegg/enterprisestack
     secrets: [docker_username, docker_password]
 
@@ -41,7 +41,7 @@ pipeline:
     url: http://104.237.4.81:8080
     secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
     service: accreditron/staging
-    docker_image: registry.gitlab.com/simontegg/enterprise-stack
+    docker_imagep: r.cfcr.io/simontegg/simontegg/enterprisestack
     timeout: 360
     confirm: true
   
