@@ -1,0 +1,28 @@
+version: '1.0'
+steps:
+  build:
+    title: Building Docker Image
+    type: build
+    image_name: simontegg/enterprisestack
+    working_directory: ./
+    dockerfile: Dockerfile
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+  tests:
+    title: Running Unit Tests
+    image: '${{build}}'
+    working_directory: IMAGE_WORK_DIR
+    comands: 
+      - npm run build
+      - npm test
+    on_success:
+      metadata:
+        set:
+          - '${{BuildingDockerImage.imageId}}':
+              - CF_QUALITY: true
+    on_fail:
+      metadata:
+        set:
+          - '${{BuildingDockerImage.imageId}}':
+              - CF_QUALITY: false
+
+
