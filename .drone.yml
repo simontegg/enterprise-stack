@@ -16,7 +16,6 @@ pipeline:
       mount: 
         - node_modules
         - .git
-
   # rebuild-cache:
   #   image: drillster/drone-volume-cache
   #   rebuild: true
