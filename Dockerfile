@@ -1,7 +1,4 @@
-FROM alpine:latest
-
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh nodejs nodejs-npm && npm install npm@latest -g
+FROM simontegg/alpine-node-git
 
 COPY package.json /tmp/package.json
 COPY package-lock.json /tmp/package-lock.json
