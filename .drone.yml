@@ -6,7 +6,6 @@ pipeline:
   #     - ./node_modules
   #   volumes:
   #     - /tmp/cache:/cache
-
   build:
     image: simontegg/alpine-node-git
     commands:
