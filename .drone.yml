@@ -1,11 +1,12 @@
 pipeline:
-  # restore-cache:
-  #   image: drillster/drone-volume-cache
-  #   restore: true
-  #   mount:
-  #     - ./node_modules
-  #   volumes:
-  #     - /tmp/cache:/cache
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+
   build:
     image: simontegg/alpine-node-git
     commands:
@@ -15,13 +16,14 @@ pipeline:
       mount: 
         - node_modules
         - .git
-  # rebuild-cache:
-  #   image: drillster/drone-volume-cache
-  #   rebuild: true
-  #   mount:
-  #     - ./node_modules
-  #   volumes:
-  #     - /tmp/cache:/cache
+  
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
 
   test:
     image: simontegg/alpine-node-git
