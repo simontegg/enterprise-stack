@@ -72,6 +72,7 @@
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "buffer-json": "^1.0.0",
+    "bulk-require": "^1.0.0",
     "cssnano": "^3.10.0",
     "fela": "^5.0.1",
     "fela-dom": "^5.0.2",
