@@ -44,4 +44,11 @@ pipeline:
     docker_image: r.cfcr.io/simontegg/simontegg/enterprisestack
     timeout: 360
     confirm: true
+
+services:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test
   

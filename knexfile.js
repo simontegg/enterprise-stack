@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'dev',
       user:     'postgres'
     },
     pool: {
@@ -21,7 +21,7 @@ module.exports = {
   test: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'test',
       user:     'postgres'
     },
     pool: {
@@ -37,7 +37,7 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'staging',
       user:     'username',
       password: 'password'
     },
@@ -54,7 +54,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'accreditron',
       user:     'username',
       password: 'password'
     },

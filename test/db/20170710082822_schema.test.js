@@ -25,7 +25,6 @@ test('schema', async () => {
   const sqlFiles = await glob.readdirPromise('db/verify/*.sql')
 
   for (let file of sqlFiles) {
-    console.log(file)
     const sql = await readFileAsync(file, 'utf8')
 
     try {
@@ -33,11 +32,7 @@ test('schema', async () => {
 
       for (let row of result.rows) {
         for (let key in row) {
-          console.log(row[key])
-
-          if (typeof row[key] === 'boolean') {
-            expect(row[key]).toEqual(true)
-          }
+          expect(row[key]).toEqual(true)
         }
       }
 
