@@ -25,10 +25,16 @@ pipeline:
     volumes:
       - /tmp/cache:/cache
 
-  test:
+  unit-tests:
     image: simontegg/alpine-node-git
     commands:
       - npm test
+
+  integration-tests:
+    image: simontegg/alpine-node-git
+    commands:
+      - npm test:integration
+
 
   docker:
     image: plugins/docker

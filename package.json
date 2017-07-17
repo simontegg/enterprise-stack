@@ -9,7 +9,8 @@
     "start": "NODE_ENV=production node server.js",
     "format": "prettier-standard ./**/*.js",
     "export": "next export",
-    "test": "jest fake"
+    "test": "jest fake",
+    "test:integration": "jest schema"
   },
   "jest": {
     "verbose": true,
