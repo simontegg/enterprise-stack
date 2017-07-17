@@ -33,7 +33,7 @@ pipeline:
   integration-tests:
     image: simontegg/alpine-node-git
     commands:
-      - npm test:integration
+      - npm run test:integration
 
 
   docker:
