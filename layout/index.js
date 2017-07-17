@@ -30,7 +30,7 @@ import MdGroup from '../components/icons/md-group'
 
 const menuItems = [
   {
-    name: 'About',
+    name: 'Test',
     Icon: MdDashboard,
     route: { pathname: '/dashboard', query: { view: '' } }
   },
