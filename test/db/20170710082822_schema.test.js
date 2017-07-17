@@ -1,7 +1,8 @@
 // main
 const fs = require('fs')
 const path = require('path')
-const { promisify } = require('util')
+//const { promisify } = require('util')
+const promisify = require('es6-promisify')
 const readFileAsync = promisify(fs.readFile)
 const glob = require('glob-fs')({ gitignore: true })
 

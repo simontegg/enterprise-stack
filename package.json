@@ -46,6 +46,7 @@
     "babel-plugin-module-resolver": "^2.7.1",
     "camelize": "^1.0.0",
     "debug": "^2.6.8",
+    "es6-promisify": "^5.0.0",
     "express": "^4.15.3",
     "glob": "^7.1.2",
     "graphql": "^0.9.6",
