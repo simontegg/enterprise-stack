@@ -7,15 +7,24 @@ pipeline:
     volumes:
       - /tmp/cache:/cache
 
-  build:
-    image: simontegg/alpine-node-git
+  run-tests-suite:
+    image: michalpodeszwa/docker-compose:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - npm install
-      - npm run build
-    cache:
-      mount: 
-        - node_modules
-        - .git
+      - ./bin/drone-run-tests.sh integration-tests
+    when:
+      event: [push]
+
+#  build:
+#    image: simontegg/alpine-node-git
+#    commands:
+#      - npm install
+#      - npm run build
+#    cache:
+#      mount: 
+#        - node_modules
+#        - .git
 
   rebuild-cache:
     image: drillster/drone-volume-cache
@@ -25,18 +34,18 @@ pipeline:
     volumes:
       - /tmp/cache:/cache
 
-  unit-tests:
-    image: simontegg/alpine-node-git
-    commands:
-      - npm test
+#  unit-tests:
+#    image: simontegg/alpine-node-git
+#    commands:
+#      - npm test
+#
+#  integration-tests:
+#    image: simontegg/alpine-node-git
+#    commands:
+#      - npm run test:integration
 
-  integration-tests:
-    image: simontegg/alpine-node-git
-    commands:
-      - npm run test:integration
 
-
-  docker:
+  push-to-registry:
     image: plugins/docker
     registry: r.cfcr.io
     repo: r.cfcr.io/simontegg/simontegg/enterprisestack
@@ -51,10 +60,10 @@ pipeline:
     timeout: 360
     confirm: true
 
-services:
-  database:
-    image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=test
+#services:
+#  database:
+#    image: postgres
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_DB=test
   

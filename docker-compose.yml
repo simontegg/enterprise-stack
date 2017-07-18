@@ -1,0 +1,21 @@
+version: '2'
+services:
+  postgres:
+    restart: always
+    image: kiasaki/alpine-postgres:9.5
+    environment:
+      - POSTGRES_USER:'postgres'
+      - POSTGRES_PASSWORD:'postgres'
+      - POSTGRES_DB:'test'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - '5432:5432'
+  app:
+    build: ./
+    volumes:
+      - "./api/src:/app/src"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
