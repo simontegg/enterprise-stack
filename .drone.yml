@@ -7,24 +7,24 @@ pipeline:
     volumes:
       - /tmp/cache:/cache
 
-  run-tests-suite:
-    image: michalpodeszwa/docker-compose:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - ./bin/drone-run-tests.sh integration-tests
-    when:
-      event: [push]
-
-#  build:
-#    image: simontegg/alpine-node-git
+#  run-tests-suite:
+#    image: michalpodeszwa/docker-compose:latest
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
 #    commands:
-#      - npm install
-#      - npm run build
-#    cache:
-#      mount: 
-#        - node_modules
-#        - .git
+#      - ./bin/drone-run-tests.sh integration-tests
+#    when:
+#      event: [push]
+
+  build:
+    image: simontegg/alpine-node-git
+    commands:
+      - npm install
+      - npm run build
+    cache:
+      mount: 
+        - node_modules
+        - .git
 
   rebuild-cache:
     image: drillster/drone-volume-cache
@@ -39,10 +39,12 @@ pipeline:
 #    commands:
 #      - npm test
 #
-#  integration-tests:
-#    image: simontegg/alpine-node-git
-#    commands:
-#      - npm run test:integration
+  integration-tests:
+    image: simontegg/alpine-node-git
+    environment: 
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/test
+    commands:
+      - npm run test:integration
 
 
   push-to-registry:
@@ -60,10 +62,11 @@ pipeline:
     timeout: 360
     confirm: true
 
-#services:
-#  database:
-#    image: postgres
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_DB=test
+services:
+  database:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test
   

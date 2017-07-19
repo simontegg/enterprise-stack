@@ -2,22 +2,27 @@ version: '2'
 services:
   postgres:
     restart: always
-    image: kiasaki/alpine-postgres:9.5
+    image: postgres:9.6-alpine
     environment:
-      - POSTGRES_USER:'postgres'
-      - POSTGRES_PASSWORD:'postgres'
-      - POSTGRES_DB:'test'
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      #      - /var/run/docker.sock:/var/run/docker.sock
+       - ./data/postgres:/var/lib/postgresql/data
     ports:
       - '5432:5432'
   app:
-    build: ./
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
     environment:
       - NODE_ENV=test
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/test
   integration-tests:
-    image: dronestarter_ds-api
-    command: npm run test:integration
+    image: app
+    command: ['./bin/wait-for-postgres.sh', 'postgres', 'npm run test:integration']
+  #  command: npm run test:integration
     depends_on:
       - postgres
       - app
