@@ -1,11 +1,11 @@
 pipeline:
-  restore-cache:
-    image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - ./node_modules
-    volumes:
-      - /tmp/cache:/cache
+  # restore-cache:
+  #   image: drillster/drone-volume-cache
+  #   restore: true
+  #   mount:
+  #     - ./node_modules
+  #   volumes:
+  #     - /tmp/cache:/cache
 
 #  run-tests-suite:
 #    image: michalpodeszwa/docker-compose:latest
@@ -15,6 +15,7 @@ pipeline:
 #      - ./bin/drone-run-tests.sh integration-tests
 #    when:
 #      event: [push]
+#
 
   build:
     image: simontegg/alpine-node-git
@@ -26,14 +27,14 @@ pipeline:
         - node_modules
         - .git
 
-  rebuild-cache:
-    image: drillster/drone-volume-cache
-    rebuild: true
-    mount:
-      - ./node_modules
-    volumes:
-      - /tmp/cache:/cache
-
+#  rebuild-cache:
+#    image: drillster/drone-volume-cache
+#    rebuild: true
+#    mount:
+#      - ./node_modules
+#    volumes:
+#      - /tmp/cache:/cache
+#
 #  unit-tests:
 #    image: simontegg/alpine-node-git
 #    commands:
