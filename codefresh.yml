@@ -36,12 +36,12 @@ steps:
     on_success:
       metadata:
         set:
-          - '${{BuildingDockerImage.imageId}}':
+          - '${{build.imageId}}':
               - CF_QUALITY: true
     on_fail:
       metadata:
         set:
-          - '${{BuildingDockerImage.imageId}}':
+          - '${{build.imageId}}':
               - CF_QUALITY: false
 
 
