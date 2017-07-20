@@ -7,13 +7,28 @@ steps:
     working_directory: ./
     dockerfile: Dockerfile
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
-  tests:
-    title: Running Unit Tests
-    image: '${{build}}'
+#  unit-tests:
+#    title: Running Unit Tests
+#    image: '${{build}}'
+#    working_directory: IMAGE_WORK_DIR
+#    comands: 
+#      - npm run build
+#      - npm test
+  integration-tests:
+    type: composition
     working_directory: IMAGE_WORK_DIR
-    comands: 
-      - npm run build
-      - npm test
+    composition:
+      version: '3'
+      services: 
+        app: 
+          image: '${{build}}'
+          links:
+            - postgres
+          ports: 
+            - 3000
+        postgres:
+          image: postgres:9.6-alpine
+
     on_success:
       metadata:
         set:
