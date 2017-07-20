@@ -3,7 +3,6 @@
 image: simontegg/alpine-node-git
 
 services:
-  - docker:dind
   - postgres:9.6-alpine
 
 variables:
@@ -14,7 +13,6 @@ variables:
   DATABASE_URL: postgresql://postgres:postgres@postgres/test
 
 before_script:
-  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
   - npm install
 
 cache:
@@ -26,10 +24,12 @@ stages:
   - test
 
 build:
+  image: docker:latest
   stage: build
   script:
-   - docker build -t $IMAGE_TAG .
-   - docker push $IMAGE_TAG
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
 
 test_unit:
   stage: test
