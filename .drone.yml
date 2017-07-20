@@ -48,20 +48,20 @@ pipeline:
       - npm run test:integration
 
 
-  push-to-registry:
-    image: plugins/docker
-    registry: r.cfcr.io
-    repo: r.cfcr.io/simontegg/simontegg/enterprisestack
-    secrets: [docker_username, docker_password]
-
-  rancher:
-    image: peloton/drone-rancher
-    url: http://104.237.4.81:8080
-    secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
-    service: accreditron/staging
-    docker_image: r.cfcr.io/simontegg/simontegg/enterprisestack
-    timeout: 360
-    confirm: true
+#  push-to-registry:
+#    image: plugins/docker
+#    registry: r.cfcr.io
+#    repo: r.cfcr.io/simontegg/simontegg/enterprisestack
+#    secrets: [docker_username, docker_password]
+#
+#  rancher:
+#    image: peloton/drone-rancher
+#    url: http://104.237.4.81:8080
+#    secrets: [PLUGIN_ACCESS_KEY, PLUGIN_SECRET_KEY]
+#    service: accreditron/staging
+#    docker_image: r.cfcr.io/simontegg/simontegg/enterprisestack
+#    timeout: 360
+#    confirm: true
 
 services:
   database:

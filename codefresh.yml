@@ -34,11 +34,11 @@ steps:
             timeout: 10s
             retries: 3
 
-    composition-candidates:
+    composition_candidates:
       tests:
         image: '${{build}}'
         command: NODE=test npm run test:integration
-    composition-variables:
+    composition_variables:
       - DATABASE_URL=postgresql://postgres:postgres@postgres/test
 
     on_success:
