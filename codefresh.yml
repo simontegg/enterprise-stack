@@ -28,10 +28,10 @@ steps:
             - 3000
         postgres:
           image: postgres:9.6-alpine
-      composition-candidates:
-        tests:
-          image: '${{build}}'
-          command: npm run test:integration
+    composition-candidates:
+      tests:
+        image: '${{build}}'
+        command: npm run test:integration
 
     on_success:
       metadata:
