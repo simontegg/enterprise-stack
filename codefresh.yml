@@ -28,10 +28,18 @@ steps:
             - 3000
         postgres:
           image: postgres:9.6-alpine
+          healthcheck:
+            test: ["CMD", "pg_isready"]
+            interval: 1m30s
+            timeout: 10s
+            retries: 3
+
     composition-candidates:
       tests:
         image: '${{build}}'
-        command: npm run test:integration
+        command: NODE=test npm run test:integration
+    composition-variables:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/test
 
     on_success:
       metadata:
