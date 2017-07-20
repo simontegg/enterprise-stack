@@ -6,6 +6,7 @@ services:
   - postgres:9.6-alpine
 
 variables:
+  DOCKER_DRIVER: overlay
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   POSTGRES_DB: test
   POSTGRES_USER: postgres
@@ -23,6 +24,7 @@ stages:
 
 build:
   image: docker:latest
+  services: docker:dind
   stage: build
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
