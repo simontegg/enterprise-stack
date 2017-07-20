@@ -2,6 +2,15 @@
 # https://hub.docker.com/r/library/node/tags/
 image: registry.gitlab.com/simontegg/enterprise-stack
 
+services:
+  - postgres:9.6-alpine
+
+variables:
+  POSTGRES_DB: test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  DATABASE_URL: postgresql://postgres:postgres@postgres/test
+
 before_script:
   - npm install
 
@@ -15,8 +24,12 @@ cache:
 # https://github.com/nodejs/LTS#lts_schedule
 # jest does not support node < 4
 # https://facebook.github.io/jest/docs/troubleshooting.html#compatibility-issues
-test:unit:
+test_unit:
   script:
     - npm run build
     - npm test
+
+test_integration:
+  script:
+    - npm run test:integration
 
