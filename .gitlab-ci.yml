@@ -12,8 +12,6 @@ variables:
   POSTGRES_PASSWORD: postgres
   DATABASE_URL: postgresql://postgres:postgres@postgres/test
 
-before_script:
-  - npm install
 
 cache:
   paths:
@@ -33,12 +31,16 @@ build:
 
 test_unit:
   stage: test
+  before_script:
+    - npm install
   script:
     - npm run build
     - npm test
 
 test_integration:
   stage: test
+  before_script:
+    - npm install
   script:
     - npm run test:integration
 
