@@ -37,9 +37,10 @@ steps:
     composition_candidates:
       tests:
         image: '${{build}}'
-        command: NODE=test npm run test:integration
+        command: npm run test:integration
     composition_variables:
       - DATABASE_URL=postgresql://postgres:postgres@postgres/test
+      - NODE_ENV=test
 
     on_success:
       metadata:
