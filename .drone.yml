@@ -16,7 +16,6 @@ pipeline:
 #    when:
 #      event: [push]
 #
-
   build:
     image: simontegg/alpine-node-git
     commands:
