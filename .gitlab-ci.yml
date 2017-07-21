@@ -13,15 +13,12 @@ variables:
   POSTGRES_PASSWORD: postgres
   DATABASE_URL: postgresql://postgres:postgres@postgres/test
 
-before_script:
-  - npm install
-  - npm run build
-
 cache:
   paths:
     - node_modules/
 
 stages: 
+  - prep
   - test
   - build
 
@@ -34,6 +31,11 @@ build:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
+
+prep:
+  stage: prep
+  script:
+    - npm install
 
 test_unit:
   stage: test
