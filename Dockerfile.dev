@@ -1,5 +1,5 @@
-FROM alpine:latest
+FROM docker:17.06.1-ce-rc1-dind
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash docker git openssh nodejs nodejs-npm && npm install npm@latest -g
+    apk add --no-cache bash git openssh nodejs nodejs-npm && npm install npm@latest -g
 
