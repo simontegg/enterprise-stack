@@ -42,7 +42,7 @@ pipeline:
   integration-tests:
     image: simontegg/alpine-node-git
     commands:
-      - npm run test:integration
+      - npm run integration
 
 
 #  push-to-registry:
