@@ -10,6 +10,7 @@
     "format": "prettier-standard ./**/*.js",
     "export": "next export",
     "test": "jest fake",
+    "test:integration": "jest schema",
     "integration": "binci integration"
   },
   "jest": {

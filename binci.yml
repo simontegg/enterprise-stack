@@ -18,3 +18,4 @@ tasks:
   shell: /bin/sh
   test: npm test
   integration: npm run test:integration
+
