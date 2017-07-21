@@ -1,0 +1,14 @@
+'use strict';var fs = require('fs');
+var path = require('path');
+
+exports.up = function (knex) {
+  var filepath = path.join(__dirname, '../deploy/valueflows-schema.sql');
+  var sql = fs.readFileSync(filepath, 'utf8');
+  return knex.schema.raw(sql);
+};
+
+exports.down = function (knex, Promise) {
+  var filepath = path.join(__dirname, '../revert/valueflows-schema.sql');
+  var sql = fs.readFileSync(filepath, 'utf8');
+  return knex.schema.raw(sql);
+};

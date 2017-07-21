@@ -1,0 +1,20 @@
+from: simontegg/alpine-node-git
+services:
+  - postgres:
+      from: postgres:9.6-alpine
+      env:
+        - POSTGRES_DB=test
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      expose:
+        - 5432:5432
+expose:
+  - 3000:3000
+env: 
+  - DATABASE_URL=postgresql://postgres:postgres@postgres/test
+before: npm install
+tasks:
+  env: env | sort
+  shell: /bin/sh
+  test: npm test
+  integration: npm run test:integration

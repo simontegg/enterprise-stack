@@ -2,8 +2,6 @@
 # https://hub.docker.com/r/library/node/tags/
 image: simontegg/alpine-node-git
 
-services:
-  - postgres:9.6-alpine
 
 variables:
   DOCKER_DRIVER: overlay
@@ -44,6 +42,8 @@ test_unit:
 
 test_integration:
   stage: test
+  services:
+    - postgres:9.6-alpine
   script:
     - npm run test:integration
 

@@ -10,7 +10,7 @@
     "format": "prettier-standard ./**/*.js",
     "export": "next export",
     "test": "jest fake",
-    "test:integration": "jest schema"
+    "integration": "binci integration"
   },
   "jest": {
     "verbose": true,
@@ -73,6 +73,7 @@
     "babel-plugin-inline-react-svg": "^0.4.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "binci": "^4.2.0",
     "buffer-json": "^1.0.0",
     "bulk-require": "^1.0.0",
     "cssnano": "^3.10.0",
