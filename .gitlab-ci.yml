@@ -1,9 +1,9 @@
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
-image: simontegg/alpine-node-git
+image: docker:latest
 
 services:
-  - postgres:9.6-alpine
+  - docker:dind
 
 variables:
   DOCKER_DRIVER: overlay
@@ -13,38 +13,31 @@ variables:
   POSTGRES_PASSWORD: postgres
   DATABASE_URL: postgresql://postgres:postgres@postgres/test
 
-
-cache:
-  paths:
-    - node_modules/
+#cache:
+#  paths:
+#    - node_modules/
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
 stages: 
   - build
   - test
 
 build:
-  image: docker:latest
-  services: 
-    - docker:dind
   stage: build
   script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
 test_unit:
   stage: test
-  before_script:
-    - npm install
   script:
-    - npm run build
-    - npm test
+    - docker run $IMAGE_TAG npm test
 
 test_integration:
   stage: test
-  before_script:
-    - npm install
   script:
-    - npm run test:integration
+    - docker run -d -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=postgres" -e "POSTGRES_DB=test" postgres:9.5
+    - docker run -e --link=postgres:db "DATABASE_URL=postgresql://postgres:postgres@postgres/test" $IMAGE_TAG npm run test:integration
 
 
