@@ -42,12 +42,14 @@ pipeline:
   integration-tests:
     image: simontegg/alpine-node-git
     environment:
+ 
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/test
       - DOCKER_API_VERSION=1.20
       - DOCKER_HOST=/var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - npm run integration
+      - npm run test:integration
 
 
 #  push-to-registry:
@@ -64,4 +66,12 @@ pipeline:
 #    docker_image: r.cfcr.io/simontegg/simontegg/enterprisestack
 #    timeout: 360
 #    confirm: true
+#
+services:
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   
