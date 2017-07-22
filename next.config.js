@@ -19,11 +19,9 @@ const production = [
 
 module.exports = {
   webpack: (config, { dev }) => {
-
     rules.forEach(rule => {
       config.module.rules.push(rule)
     })
-
 
     if (dev) {
       return Object.assign({}, config, { devtool: 'cheap-module-source-map' })

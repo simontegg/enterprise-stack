@@ -4,52 +4,52 @@ const createTestCafe = require('testcafe')
 const testControllerHolder = require('../support/testControllerHolder')
 const config = require('../../config')
 const server = require('../../server')
-const getPort = require('get-port')
-const delay = require('timeout-as-promise')
-const series = require('run-series')
+const toPull = require('pull-promise')
+const pull = require('pull-stream')
+const { asyncMap, once, onEnd } = pull
 
 let testcafe = null
 const DELAY = 20000
 
-function createTestFile () {
-  fs.writeFileSync(
+function createTestFile (callback) {
+  fs.writeFile(
     'test.js',
     'import testControllerHolder from "./features/support/testControllerHolder.js";\n\n' +
       'fixture("fixture")\n' +
-      'test("test", testControllerHolder.capture);'
+      'test("test", testControllerHolder.capture);',
+    callback
   )
-
 }
 
-const runTest = async () => {
+const runTest = async (callback) => {
   testcafe = await createTestCafe('localhost', 1337, 1338)
   const  runner = testcafe.createRunner()
+  console.log('created runner')
 
   return runner
     .src('./test.js')
     .browsers('chrome')
     .run()
-    .completionPromise
+    .completionPrmoise
 }
 
 defineSupportCode(function ({ registerHandler, setDefaultTimeout }) {
   setDefaultTimeout(DELAY)
 
-  registerHandler('BeforeFeatures', function (features) {
-    createTestFile()
-
-    return server(config.port)
-      .then(() => {
-        return runTest()
-      })
-      .catch(console.error)
-
+  registerHandler('BeforeFeatures', function (features, callback) {
+    pull(
+      once(config.port),
+      asyncMap(server),
+      asyncMap((_, cb) => createTestFile(cb)),
+      toPull.through(() => runTest()),
+      onEnd(callback)
+    )
   })
 
   registerHandler('AfterFeatures', function (features, callback) {
     fs.unlinkSync('test.js')
     testControllerHolder.free()
     testcafe.close()
-    callback()
+    callback(null)
   })
 })

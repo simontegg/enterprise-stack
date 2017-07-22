@@ -17,7 +17,7 @@ class Index extends Component {
   render () {
     return (
       <div>
-        <Head> 
+        <Head>
           <title>Accreditron</title>
         </Head>
         <Provider renderer={getRenderer()}>
