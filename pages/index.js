@@ -16,9 +16,14 @@ import getRenderer from '../styles/fela'
 class Index extends Component {
   render () {
     return (
-      <Provider renderer={getRenderer()}>
-        <Layout url={this.props.url} />
-      </Provider>
+      <div>
+        <Head> 
+          <title>Accreditron</title>
+        </Head>
+        <Provider renderer={getRenderer()}>
+          <Layout url={this.props.url} />
+        </Provider>
+      </div>
     )
   }
 }

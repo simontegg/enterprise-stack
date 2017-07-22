@@ -16,7 +16,6 @@ import getRenderer from '../styles/fela'
 export default ({ url }) =>
   <Provider renderer={getRenderer()}>
     <ThemeProvider theme={theme}>
-      <Layout url={url} >
-      </Layout>
+      <Layout url={url} />
     </ThemeProvider>
   </Provider>

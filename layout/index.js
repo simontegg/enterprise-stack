@@ -71,23 +71,21 @@ const menuItems = [
   }
 ]
 
-
 const title = <h4>Ashlyn Baum</h4>
 
 export default ({ children, url: { query: { view } } }) =>
   <div>
-    <Head>
-    </Head>
+    <Head />
     <Grid>
       <Logo>
         <Image src='/static/AT.png' size={64} marginLeft={64} />
       </Logo>
       <Header />
-      
+
       <Sider>
         <SideMenu menuItems={menuItems} activeView={view} />
       </Sider>
-      <Content >
+      <Content>
         {children}
       </Content>
     </Grid>

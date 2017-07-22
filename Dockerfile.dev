@@ -1,9 +1,5 @@
 FROM alpine:latest
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash docker git openssh nodejs nodejs-npm && npm install npm@latest -g
+    apk add --no-cache bash git openssh nodejs nodejs-npm && npm install npm@latest -g
 
-VOLUME /var/run/docker.sock
-
-
-RUN docker ps

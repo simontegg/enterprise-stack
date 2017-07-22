@@ -6,9 +6,6 @@ import { map, merge } from 'ramda'
 import Head from 'next/head'
 //import { Table, Icon } from 'semantic-ui-react'
 
-
-
-
 const AGENTS_PER_PAGE = 10
 const columns = [
   {
@@ -23,14 +20,14 @@ const addKeys = map(organization =>
 )
 
 function OrganizationList ({ allOrganizations, loading }) {
-  console.log("loading", loading)
+  console.log('loading', loading)
   return (
     <div>
       <Head>
         <style dangerouslySetInnerHTML={{ __html: style }} />
       </Head>
       <label> Create a new organization </label>
-      <input type="text" name="org"/>
+      <input type='text' name='org' />
       {loading
         ? <div>Loading</div>
         : <Table celled striped>
@@ -42,11 +39,12 @@ function OrganizationList ({ allOrganizations, loading }) {
             <Table.Body>
               {map(({ name }) =>
                 <Table.Row>
-                  <Table.Cell>{name}</Table.Cell>
+                  <Table.Cell>
+                    {name}
+                  </Table.Cell>
                 </Table.Row>
               )(allOrganizations.nodes)}
             </Table.Body>
-
           </Table>}
     </div>
   )
@@ -57,14 +55,15 @@ function OrganizationList ({ allOrganizations, loading }) {
 
 export default graphql(
   gql`
- query allOrganizations($first: Int!) {
-   allOrganizations(first: $first, orderBy: NAME_ASC) {
-     nodes {
-       id,
-       name
-   }
-   }
- }`,
+    query allOrganizations($first: Int!) {
+      allOrganizations(first: $first, orderBy: NAME_ASC) {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  `,
   {
     options: {
       variables: {
@@ -72,14 +71,13 @@ export default graphql(
       }
     },
     props: ({ data }) => {
-      return{
-        allOrganizations : data.allOrganizations || {},
+      return {
+        allOrganizations: data.allOrganizations || {},
         // nodes : allOrganizations.nodes || [],
-      // data,
-      // organizations: nodes,
-      loading : data.loading
+        // data,
+        // organizations: nodes,
+        loading: data.loading
       }
     }
   }
 )(OrganizationList)
-

@@ -5,9 +5,7 @@ import { Menu, MenuItem } from '../components/menu'
 import Router from 'next/router'
 import Link from 'next/link'
 
-
 import { map } from 'ramda'
-
 
 const SideMenu = ({ menuItems, activeView }) => {
   return (

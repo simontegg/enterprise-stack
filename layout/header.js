@@ -1,6 +1,5 @@
 import { createComponent } from 'react-fela'
 
-// TODO no shorthands
 const rule = ({ backgroundColor }) => ({
   padding: '1em',
   display: 'flex',

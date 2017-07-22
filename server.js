@@ -2,14 +2,13 @@ const express = require('express')
 const next = require('next')
 const { postgraphql } = require('postgraphql')
 
-const dev = process.env.NODE_ENV !== 'production'
-const PORT = process.env.PORT || 3000
+module.exports = function (port, callback) {
+  const dev = ['production'].indexOf(process.env.NODE_ENV) === -1
+  const app = next({ dev })
+  const handle = app.getRequestHandler()
 
-const app = next({ dev })
-const handle = app.getRequestHandler()
-
-app.prepare().then(() => {
-  const server = express()
+  return app.prepare().then(() => {
+    const server = express()
 
 //   server.use(
 //     postgraphql(
@@ -26,12 +25,26 @@ app.prepare().then(() => {
 //   )
 //
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+    server.get('*', (req, res) => {
+      return handle(req, res)
+    })
 
-  server.listen(PORT, err => {
-    if (err) throw err
-    console.log(`> Ready on http://localhost:${PORT}`)
+    if (!callback) {
+    return new Promise((resolve, reject) => {
+      server.listen(port, err => {
+        if (err) reject(err)
+        console.log(`> Ready on http://localhost:${port}`)
+        resolve()
+      })
+    })
+    } 
+
+      server.listen(port, err => {
+        if (err) callback(err)
+        console.log(`> Ready on http://localhost:${port}`)
+        callback(null)
+      })
+    
   })
-})
+}
+
