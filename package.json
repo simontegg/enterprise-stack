@@ -75,7 +75,6 @@
   "devDependencies": {
     "@taskr/concat": "^1.0.6",
     "autoprefixer": "^7.1.1",
-    "await-to-js": "^1.0.1",
     "babel-jest": "^20.0.3",
     "babel-plugin-inline-react-svg": "^0.4.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -88,7 +87,6 @@
     "cucumber": "^2.3.1",
     "fela": "^5.0.1",
     "fela-dom": "^5.0.2",
-    "get-port": "^3.1.0",
     "glob-fs": "^0.1.6",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.4.2",

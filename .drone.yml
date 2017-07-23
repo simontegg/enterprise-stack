@@ -1,21 +1,12 @@
 pipeline:
-  #  restore-cache:
-  #    image: drillster/drone-volume-cache
-  #    restore: true
-  #    mount:
-  #      - ./node_modules
-  #    volumes:
-  #      - /tmp/cache:/cache
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
 
-#  run-tests-suite:
-#    image: michalpodeszwa/docker-compose:latest
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
-#    commands:
-#      - ./bin/drone-run-tests.sh integration-tests
-#    when:
-#      event: [push]
-#
   build:
     image: simontegg/alpine-node-git
     commands:
@@ -26,30 +17,29 @@ pipeline:
         - node_modules
         - .git
 
-#  rebuild-cache:
-#    image: drillster/drone-volume-cache
-#    rebuild: true
-#    mount:
-#      - ./node_modules
-#    volumes:
-#      - /tmp/cache:/cache
-#
-#  unit-tests:
-#    image: simontegg/alpine-node-git
-#    commands:
-#      - npm test
-#
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+
+  unit-tests:
+    image: simontegg/alpine-node-git
+    commands:
+      - npm test
+
   integration-tests:
     image: simontegg/alpine-node-git
     environment:
- 
       - DATABASE_URL=postgresql://postgres:postgres@postgres/test
       - DOCKER_API_VERSION=1.20
       - DOCKER_HOST=/var/run/docker.sock
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - npm run test:integration
+    when:
+      branch: master
 
 
 #  push-to-registry:
@@ -74,4 +64,6 @@ services:
       - POSTGRES_DB=test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    when: 
+      branch: master
   
