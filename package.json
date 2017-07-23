@@ -110,7 +110,6 @@
     "styled-jsx-postcss": "^0.2.0",
     "taskr": "^0.9.1",
     "testcafe": "^0.16.2",
-    "testcafe-browser-provider-nightmare": "0.0.4",
     "timeout-as-promise": "^1.0.0"
   }
 }
