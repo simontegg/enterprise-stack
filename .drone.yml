@@ -41,12 +41,11 @@ pipeline:
     when:
       branch: master
 
-
-#  push-to-registry:
-#    image: plugins/docker
-#    registry: r.cfcr.io
-#    repo: r.cfcr.io/simontegg/simontegg/enterprisestack
-#    secrets: [docker_username, docker_password]
+  push-to-registry:
+    image: plugins/docker
+    registry: repo.treescale.com
+    repo: repo.treescale.com/simontegg/enterprise-stack
+    secrets: [docker_username, docker_password]
 #
 #  rancher:
 #    image: peloton/drone-rancher
